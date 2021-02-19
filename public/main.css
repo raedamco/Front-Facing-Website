@@ -1,0 +1,422 @@
+:root {
+	--background-color:black;
+	--text-color:white;
+}
+/* ======================== mobile ======================== */
+body {
+	background-color: black; /* fallback */
+	background-color: var(--background-color);
+	color: white; /* fallback */
+	color: var(--text-color);
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	font-weight: 300;
+	margin: 0;
+}
+.stop-scrolling { 
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+	padding: 6.6vmax 3vw;
+	text-align: center;
+}
+
+main article {
+	padding: 3vmax 2vw;
+}
+
+main p {
+	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
+}
+main p.small {
+	font-size: calc((1 - 1) * 1.2vw + 1rem);
+}
+
+/* TODO remove */
+.detect-mobile {
+	height: 10px;
+	background-color: green;
+}
+
+/* anchors */
+a img {border: 0 solid transparent;}
+a {
+	text-decoration:none;
+	/*border-bottom:2px solid white;
+	border-bottom:2px solid var(--text-color);*/
+}
+a:link {}
+a:hover {}
+a:active {}
+a:visited {}
+
+h1 {
+	font-size: calc((3.7 - 1) * 1.2vw + 1rem);
+}
+h2 {
+	font-size: calc((3.4 - 1) * 1.2vw + 1rem);
+}
+h3 {
+	font-size: calc((2.2 - 1) * 1.2vw + 1rem);
+}
+
+h1, h2, h3, h4 {
+	line-height: 1.2em;
+	font-weight: 500;
+	margin: 2rem 0;
+}
+
+button, .button {
+	padding: 1.3rem 2.171rem;
+	color: black;	/* fallback */
+	background-color: white;	/* fallback */
+	color: var(--background-color);
+	background-color: var(--text-color);
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	display:inline-block;
+	/* remove default button css */
+	font:inherit;
+	border:0px solid white;
+	/* animation */
+	transition: .1s opacity linear;
+	/* border radius */
+	-webkit-border-radius: 0.4rem;/*Safari, Chrome*/
+	-moz-border-radius: 0.4rem;/*Firefox*/
+	border-radius: 0.4rem;
+}
+button:hover, .button:hover, [class^="socicon-"]:hover, [class*=" socicon-"]:hover {
+	opacity: 0.8;
+}
+
+.radius {
+	-webkit-border-radius: 0.4rem;/*Safari, Chrome*/
+	-moz-border-radius: 0.4rem;/*Firefox*/
+	border-radius: 0.4rem;
+}
+
+.fill-viewport {
+	height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-item {
+	flex: 1;
+	text-align: center;
+}
+
+/* form */
+form {
+	text-align:left;
+}
+.description {
+	font-size: calc((.9 - 1) * 1.2vw + 1rem);
+	opacity:0.7;
+}
+fieldset {
+	border: 0px solid black;
+	border: 0px solid var(--background-color);
+	padding:0;
+}
+form div, label, .email, .website, .sector {
+	margin-bottom:24px;
+}
+input, textarea {
+	-webkit-border-radius: 2px;/*Safari, Chrome*/
+	-moz-border-radius: 2px;/*Firefox*/
+	border-radius: 2px;
+	font:inherit;
+	width:100%;
+}
+input:invalid {
+	/*border: red solid 3px;*/
+}
+input.button, .phone {
+	width:auto;
+}
+.city {
+	float:left;
+	width:70%;
+}
+.state {
+	float:right;
+	width:26%;
+}
+.zip {
+	width:36%;
+}
+textarea {
+	height:100px;
+	padding: 5px;
+}
+select {
+	font:inherit;
+	font-size: calc((.9 - 1) * 1.2vw + 1rem);
+}
+
+/* header */
+/* 
+the font used for the company name is only available from adobe website. just need to create a web project
+font: acumin pro
+*/
+header {
+	background-color:black;
+	background-color:var(--background-color);
+	padding: 2.5vw 3vw;
+	max-width: 1900px;
+	margin: 0 auto;
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	right: 0px;
+	z-index:1000;
+}
+header.toggled-on {
+	height:100vh;
+}
+header-title {
+	font-weight: 700;
+	font-style: normal;
+	letter-spacing: 0.3em;
+	/* font size from squarespace website */
+	font-size: calc((1.4 - 1) * 1.2vw + 1rem);
+}
+header nav {
+	display:none;
+	text-align:center;
+}
+header nav.toggled-on {
+	display:block;
+	position: relative;
+	top: 50%;
+	transform:translate(0,-50%);
+	padding:10px;
+	font-size: 6vmin;
+}
+header a {
+	color: white; /* fallback */
+	color: var(--text-color);
+}	
+.currentpage {
+	border-bottom: 1px solid white;	/* fallback */
+	border-bottom: 1px solid var(--text-color);
+}
+header nav.toggled-on a.currentpage {
+	border-width:0.5vmin;
+}
+/* mobile menu */
+#menu-button {
+	cursor:pointer;
+	float:right;
+}
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  background-color:var(--text-color);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.bar1 {
+	margin-top:0;
+}
+.bar3 {
+	margin-bottom:0;
+}
+/* Rotate first bar */
+.cross .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+  transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+/* Fade out the second bar */
+.cross .bar2 {
+  opacity: 0;
+}
+/* Rotate last bar */
+.cross .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+/* footer */
+footer {
+	padding: 3.3vmax 3vw;
+}
+footer a {
+	text-decoration: none;
+	color: white;	/* fallback */
+	border-bottom: 1px solid white;	/* fallback */
+	color: var(--text-color);
+	border-bottom: 1px solid var(--text-color);
+}
+footer [class^="socicon-"], footer [class*=" socicon-"] {
+	border-bottom: 0px solid black;
+	border-bottom: 0px solid var(--background-color);
+}
+footer strong {
+	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
+}
+
+p:last-child {
+	margin-bottom:0;
+}
+
+/* embellishments */
+
+/* icons */
+.material-icons {
+	font-size:24px;
+	vertical-align: middle;
+}
+.material-icons {font-feature-settings: 'liga';} /* Support for IE. */
+@font-face {
+	font-family: 'Socicon';
+	src:  url('fonts/Socicon.eot?87visu');
+	src:  url('fonts/Socicon.eot?87visu#iefix') format('embedded-opentype'),
+	url('fonts/Socicon.woff2?87visu') format('woff2'),
+	url('fonts/Socicon.ttf?87visu') format('truetype'),
+	url('fonts/Socicon.woff?87visu') format('woff'),
+	url('fonts/Socicon.svg?87visu#Socicon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="socicon-"], [class*=" socicon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'Socicon' !important;
+	speak: none;
+	font-size:20px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	vertical-align: middle;
+
+	border-bottom: 0px solid black;
+	border-bottom: 0px solid var(--background-color);
+	color:white;
+	color:var(--text-color);
+	margin-right: 14px;
+	
+	/* animation */
+	transition: .1s opacity linear;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.socicon-discord::before {content: "\e01d";}
+.socicon-twitter::before {content: "\e08d";}
+.socicon-facebook::before {content: "\e028";}
+.socicon-linkedin::before {content: "\e04c";}
+.socicon-instagram::before {content: "\e044";}
+.socicon-github::before {content: "\e032";}
+.socicon-medium::before {content: "\e051";}
+.socicon-angel::before {content: "\e007";}
+
+.alignleft {
+	float:left;
+}
+.aligntextleft {
+	text-align:left;
+}
+.aligncenter {
+	text-align:center;
+	margin:0 auto;
+}
+.alignvertical {
+	position: relative;
+	top: 50%;
+	transform:translate(0,-50%);
+}
+.alignmiddle {
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform:translate(-50%,-50%);
+}
+.centeralign {
+	position: relative; 
+	left: 50%; 
+	transform:translate(-50%,0);
+}
+.alignright  {
+	float:right;
+	margin:0 0 0 2%;
+}
+.alignform, .aligntable {
+	text-align:center;
+	margin:0 auto;
+}
+.alignerror {
+	margin:0;
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform:translate(-50%,-50%);
+}
+.clear       {clear:both;}
+.clearright  {clear:right;}
+.clearleft   {clear:left;}
+
+.fifty {width:48%;}
+.maxwidth {width:100%; box-sizing:border-box;}
+.padding {padding:17px;}
+.tab {text-indent:40px;}
+
+/* ======================== Tablet ========================= */
+@media all and (min-width:900px) {
+	.detect-mobile {
+		background-color: yellow;
+	}
+	
+	/* header */
+	header {
+		display: flex;
+		align-items: center;
+	}
+	header.toggled-on {
+		height:auto;
+	}
+	header nav {
+		float: right;
+		display: flex;
+		justify-content: flex-end;
+		flex-grow: 10;
+		padding:0;
+	}
+	header nav.toggled-on {
+		display:flex;
+	}
+	header nav div {
+		margin-left: 2.5vw;
+		margin-right: 1.5vw;
+	}
+	#menu-button {
+		display:none;
+	}
+	
+	/* footer */
+	.flex-container {
+		flex-direction: row;
+	}
+}
+
+/* ======================== Desktop ======================== */
+@media all and (min-width:1200px) {
+	.detect-mobile {
+		background-color: red;
+	}
+}

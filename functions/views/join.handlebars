@@ -1,0 +1,74 @@
+<main>
+	<div class="padding">
+		<h2>Ready to join the Raedam Network?</h2>
+		<h2>Great! We're excited to work with you.</h2>
+	</div>
+	<form>
+		<fieldset>
+			<legend>Name *</legend>
+			<div class="alignleft fifty">
+				<input class="maxwidth" name="firstname" type="text" required />
+				<label for="firstname">First Name</label>
+			</div>
+			<div class="alignright fifty">
+				<input class="maxwidth" name="lastname" type="text" required />
+				<label for="lastname">Last Name</label>
+			</div>
+			<br class="clear"/>
+		</fieldset>
+		<fieldset class="email">
+			<label for="email">Email *</label>
+			<input class="maxwidth" name="email" type="email" pattern="" required />
+		</fieldset>
+		<fieldset>
+			<label for="phone">Phone *</label>
+			<p class="maxwidth description">Contact number</p>
+			<div class="maxwidth">
+				<input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="###-###-####" required />
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Address *</legend>
+			<p class="maxwidth description">Address of intended usage</p>
+			<div class="address">
+				<input class="maxwidth" name="address-1" type="text" required />
+				<label for="address-1">Address 1</label>
+			</div>
+			<div class="address">
+				<input class="maxwidth" name="address-2" type="text" required />
+				<label for="address-2">Address 2</label>
+			</div>
+			<div class="city">
+				<input class="maxwidth" name="city" type="text" required />
+				<label for="city">City</label>
+			</div>
+			<div class="state">
+				<input class="maxwidth" name="state" type="text" required />
+				<label for="state">State/Province</label>
+			</div>
+			<div class="zip">
+				<input class="maxwidth" name="zip" type="text" required />
+				<label for="zip">Zip/Postal Code</label>
+			</div>
+			<div class="country">
+				<input class="maxwidth" name="country" type="text" required />
+				<label for="country">Country</label>
+			</div>
+		</fieldset>
+		<fieldset class="website">
+			<label for="website">Company Website</label>
+			<input class="maxwidth" name="website" type="url" placeholder="http://" />
+		</fieldset>
+		<fieldset class="sector">
+			<legend>Company Sector *</legend>
+			<p class="maxwidth description">What sector does your company fall under?</p>
+			<select name="sector" required>
+				<option value="Public">Public</option>
+				<option value="Private">Private</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<input class="button" type="submit" value="Send" />
+		</fieldset>
+	</form>
+</main>
