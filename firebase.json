@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "public",
+    "site": "raedam-front-facing-website",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,5 +13,9 @@
          "function": "app"      
       }
     ]
+  },
+  "functions": {
+    "engines": {"node": "10"},
+    "runtime": "nodejs12"
   }
 }
