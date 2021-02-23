@@ -13,9 +13,15 @@ app.get('/', (req, res) => {
 	res.status(200).render('homepage');
 });
 
-app.get('/:pageTitle', (req, res) => {
+app.get('/:pageTitle', (req, res, next) => {
 	res.status(200).render(req.params.pageTitle, {
 		pageTitle: req.params.pageTitle
+	}, (err, html) => {
+		if (err) {
+			next();
+		} else {
+			res.send(html);
+		}
 	});
 });
 

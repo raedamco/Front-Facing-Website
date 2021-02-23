@@ -3,6 +3,15 @@
 	--text-color:white;
 }
 /* ======================== mobile ======================== */
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+html, body {
+	height:100%;
+}
 body {
 	background-color: black; /* fallback */
 	background-color: var(--background-color);
@@ -11,7 +20,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1rem;
 	font-weight: 300;
-	margin: 0;
+	/* limit width of website and keep it centered */
+	margin: 0 auto;
+	max-width: 1900px;
+	/* push footer to bottom on low content pages */
+	display:flex;
+	flex-direction: column;
 }
 .stop-scrolling { 
     height: 100vh;
@@ -21,6 +35,7 @@ body {
 main {
 	padding: 6.6vmax 3vw;
 	text-align: center;
+	flex: 1 0 auto;
 }
 
 main article {
@@ -60,6 +75,9 @@ h2 {
 }
 h3 {
 	font-size: calc((2.2 - 1) * 1.2vw + 1rem);
+}
+h4 {
+	font-size: calc((1.6 - 1) * 1.2vw + 1rem);
 }
 
 h1, h2, h3, h4 {
@@ -143,7 +161,7 @@ input, textarea {
 input:invalid {
 	/*border: red solid 3px;*/
 }
-input.button, .phone {
+input.button {
 	width:auto;
 }
 .city {
@@ -152,9 +170,9 @@ input.button, .phone {
 }
 .state {
 	float:right;
-	width:26%;
+	width:28%;
 }
-.zip {
+.zip, .phone {
 	width:36%;
 }
 textarea {
@@ -175,12 +193,7 @@ header {
 	background-color:black;
 	background-color:var(--background-color);
 	padding: 2.5vw 3vw;
-	max-width: 1900px;
-	margin: 0 auto;
-	position: absolute;
-	top: 10px;
-	left: 0px;
-	right: 0px;
+	flex-shrink:0;
 	z-index:1000;
 }
 header.toggled-on {
@@ -190,7 +203,6 @@ header-title {
 	font-weight: 700;
 	font-style: normal;
 	letter-spacing: 0.3em;
-	/* font size from squarespace website */
 	font-size: calc((1.4 - 1) * 1.2vw + 1rem);
 }
 header nav {
@@ -253,6 +265,7 @@ header nav.toggled-on a.currentpage {
 /* footer */
 footer {
 	padding: 3.3vmax 3vw;
+	flex-shrink:0;
 }
 footer a {
 	text-decoration: none;
@@ -371,8 +384,8 @@ p:last-child {
 .clearright  {clear:right;}
 .clearleft   {clear:left;}
 
-.fifty {width:48%;}
-.maxwidth {width:100%; box-sizing:border-box;}
+.fifty {width:49%;}
+.maxwidth {width:100%;}
 .padding {padding:17px;}
 .tab {text-indent:40px;}
 
@@ -418,5 +431,24 @@ p:last-child {
 @media all and (min-width:1200px) {
 	.detect-mobile {
 		background-color: red;
+	}
+}
+
+@media all and (min-width:2000px) {
+	h1 {
+		font-size: calc(3.7 * 1rem);
+	}
+	h2 {
+		font-size: calc(3.4 * 1rem);
+	}
+	h3 {
+		font-size: calc(2.2 * 1rem);
+	}
+	h4 {
+		font-size: calc(1.6 * 1rem);
+	}
+
+	footer strong {
+		font-size: calc(1.5 * 1rem);
 	}
 }
