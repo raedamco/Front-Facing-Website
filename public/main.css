@@ -284,9 +284,7 @@ font: acumin pro
 #footer a {
 	text-decoration: none;
 	color: white;	/* fallback */
-	/*border-bottom: 1px solid white;*/	/* fallback */
 	color: var(--text-color);
-	/*border-bottom: 1px solid var(--text-color);*/
 }
 #footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
@@ -305,8 +303,6 @@ p:last-child {
 }
 .material-icons {font-feature-settings: 'liga';} /* Support for IE. */
 .fa {
-	/*border-bottom: 0px solid black;
-	border-bottom: 0px solid var(--background-color);*/
 	color:white;
 	color:var(--text-color);
 	margin-right: 14px;
