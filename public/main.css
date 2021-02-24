@@ -58,12 +58,18 @@ main p.small {
 /* anchors */
 a img {border: 0 solid transparent;}
 a {
-	text-decoration:none;
-	/*border-bottom:2px solid white;
-	border-bottom:2px solid var(--text-color);*/
+	text-decoration: none;
+	/* animation */
+	transition: .1s opacity linear;
+}
+main a, #footer a {
+	border-bottom:1px solid white;
+	border-bottom:1px solid var(--text-color);
 }
 a:link {}
-a:hover {}
+a:hover {
+	opacity: 0.8;
+}
 a:active {}
 a:visited {}
 
@@ -106,6 +112,10 @@ button, .button {
 	-webkit-border-radius: 0.4rem;/*Safari, Chrome*/
 	-moz-border-radius: 0.4rem;/*Firefox*/
 	border-radius: 0.4rem;
+}
+.button-small {
+	font-size: calc((.9 - 1) * 1.2vw + 1rem);
+	padding: 1.04rem 1.7368rem;
 }
 button:hover, .button:hover, [class^="socicon-"]:hover, [class*=" socicon-"]:hover {
 	opacity: 0.8;
@@ -189,27 +199,27 @@ select {
 the font used for the company name is only available from adobe website. just need to create a web project
 font: acumin pro
 */
-header {
+#header {
 	background-color:black;
 	background-color:var(--background-color);
 	padding: 2.5vw 3vw;
 	flex-shrink:0;
 	z-index:1000;
 }
-header.toggled-on {
+#header.toggled-on {
 	height:100vh;
 }
-header-title {
+#header-title {
 	font-weight: 700;
 	font-style: normal;
 	letter-spacing: 0.3em;
 	font-size: calc((1.4 - 1) * 1.2vw + 1rem);
 }
-header nav {
+#header nav {
 	display:none;
 	text-align:center;
 }
-header nav.toggled-on {
+#header nav.toggled-on {
 	display:block;
 	position: relative;
 	top: 50%;
@@ -217,15 +227,19 @@ header nav.toggled-on {
 	padding:10px;
 	font-size: 6vmin;
 }
-header a {
+#header a {
 	color: white; /* fallback */
 	color: var(--text-color);
-}	
+}
+#header .button, #header .button-small {
+	color: black; /* fallback */
+	color: var(--background-color);
+}
 .currentpage {
 	border-bottom: 1px solid white;	/* fallback */
 	border-bottom: 1px solid var(--text-color);
 }
-header nav.toggled-on a.currentpage {
+#header nav.toggled-on a.currentpage {
 	border-width:0.5vmin;
 }
 /* mobile menu */
@@ -263,22 +277,18 @@ header nav.toggled-on a.currentpage {
 }
 
 /* footer */
-footer {
+#footer {
 	padding: 3.3vmax 3vw;
 	flex-shrink:0;
 }
-footer a {
+#footer a {
 	text-decoration: none;
 	color: white;	/* fallback */
-	border-bottom: 1px solid white;	/* fallback */
+	/*border-bottom: 1px solid white;*/	/* fallback */
 	color: var(--text-color);
-	border-bottom: 1px solid var(--text-color);
+	/*border-bottom: 1px solid var(--text-color);*/
 }
-footer [class^="socicon-"], footer [class*=" socicon-"] {
-	border-bottom: 0px solid black;
-	border-bottom: 0px solid var(--background-color);
-}
-footer strong {
+#footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 }
 
@@ -294,50 +304,14 @@ p:last-child {
 	vertical-align: middle;
 }
 .material-icons {font-feature-settings: 'liga';} /* Support for IE. */
-@font-face {
-	font-family: 'Socicon';
-	src:  url('fonts/Socicon.eot?87visu');
-	src:  url('fonts/Socicon.eot?87visu#iefix') format('embedded-opentype'),
-	url('fonts/Socicon.woff2?87visu') format('woff2'),
-	url('fonts/Socicon.ttf?87visu') format('truetype'),
-	url('fonts/Socicon.woff?87visu') format('woff'),
-	url('fonts/Socicon.svg?87visu#Socicon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-[class^="socicon-"], [class*=" socicon-"] {
-	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'Socicon' !important;
-	speak: none;
-	font-size:20px;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	vertical-align: middle;
-
-	border-bottom: 0px solid black;
-	border-bottom: 0px solid var(--background-color);
+.fa {
+	/*border-bottom: 0px solid black;
+	border-bottom: 0px solid var(--background-color);*/
 	color:white;
 	color:var(--text-color);
 	margin-right: 14px;
-	
-	/* animation */
-	transition: .1s opacity linear;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	padding:2px;
 }
-.socicon-discord::before {content: "\e01d";}
-.socicon-twitter::before {content: "\e08d";}
-.socicon-facebook::before {content: "\e028";}
-.socicon-linkedin::before {content: "\e04c";}
-.socicon-instagram::before {content: "\e044";}
-.socicon-github::before {content: "\e032";}
-.socicon-medium::before {content: "\e051";}
-.socicon-angel::before {content: "\e007";}
 
 .alignleft {
 	float:left;
@@ -396,26 +370,26 @@ p:last-child {
 	}
 	
 	/* header */
-	header {
+	#header {
 		display: flex;
 		align-items: center;
 	}
-	header.toggled-on {
+	#header.toggled-on {
 		height:auto;
 	}
-	header nav {
+	#header nav {
 		float: right;
 		display: flex;
 		justify-content: flex-end;
 		flex-grow: 10;
 		padding:0;
 	}
-	header nav.toggled-on {
+	#header nav.toggled-on {
 		display:flex;
 	}
-	header nav div {
-		margin-left: 2.5vw;
-		margin-right: 1.5vw;
+	#header nav div {
+		margin-left: 1.5vw;
+		margin-right: 2.5vw;
 	}
 	#menu-button {
 		display:none;
@@ -448,7 +422,7 @@ p:last-child {
 		font-size: calc(1.6 * 1rem);
 	}
 
-	footer strong {
+	#footer strong {
 		font-size: calc(1.5 * 1rem);
 	}
 }
