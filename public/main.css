@@ -220,7 +220,8 @@ font: acumin pro
 	text-align:center;
 }
 #header nav.toggled-on {
-	display:block;
+	display:flex;
+	flex-direction: column;
 	position: relative;
 	top: 50%;
 	transform:translate(0,-50%);
@@ -238,6 +239,9 @@ font: acumin pro
 .currentpage {
 	border-bottom: 1px solid white;	/* fallback */
 	border-bottom: 1px solid var(--text-color);
+}
+#header nav.toggled-on div {
+	margin-bottom:10px;
 }
 #header nav.toggled-on a.currentpage {
 	border-width:0.5vmin;
@@ -377,15 +381,26 @@ p:last-child {
 		float: right;
 		display: flex;
 		justify-content: flex-end;
+		align-items: center;
 		flex-grow: 10;
 		padding:0;
 	}
 	#header nav.toggled-on {
-		display:flex;
+		flex-direction:row;
+		font-size:inherit;
 	}
-	#header nav div {
+	#header nav a {
 		margin-left: 1.5vw;
 		margin-right: 2.5vw;
+	}
+	#header nav a:last-child {
+		margin-right: 0;
+	}
+	#header nav.toggled-on div {
+		margin-bottom: 0;
+	}
+	#header nav.toggled-on a.currentpage {
+		border-width:1px;
 	}
 	#menu-button {
 		display:none;
