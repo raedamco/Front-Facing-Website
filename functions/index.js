@@ -49,21 +49,20 @@ app.get('/:pageTitle', (req, res, next) => {
 // - Forms
 app.post('/early-access-form',
 body('email').isEmail().withMessage("Invalid email"),
-body('firstname').isLength({min: 1}),
-body('lastname').isLength({min: 1}),
+body('firstname').isLength({min: 1}).withMessage("Missing first name"),
+body('lastname').isLength({min: 1}).withMessage("Missing last name"),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		console.log(errors);
-		return res.status(400).json({ errors: errors.array() });
+		return res.status(400).send({ errors: errors.array() });
 	}
-	console.log("Form submitted successfully.");
-	/*let jwt = getJwt();
+	console.log("Form passed validation.");
+	let jwt = getJwt();
 	let apiKey = getApiKey();
 	let spreadsheetId = '1I2KGPmvnKbWW8tOTfdGlrgvwI3Il9zrAKx9Xs6WY05Y';		// TODO Replace with real id. This one is a test spreadsheet.
 	let range = 'A1:B3';
 	let row = [getDate(), req.body.firstname + " " + req.body.lastname, req.body.email];
-	appendSheetRow(jwt, apiKey, spreadsheetId, range, row);*/
+	appendSheetRow(jwt, apiKey, spreadsheetId, range, row);
 	res.status(200).type('text/plain').end('OK');
 });
 
