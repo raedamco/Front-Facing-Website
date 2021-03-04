@@ -36,7 +36,7 @@ window.addEventListener("load", function() {
 				for(let i = 0; i < errors.length; i++) {
 					errorMsg += "<br />" + errors[i].msg;
 				}
-				//form.innerHTML += "<p id='errormessage' class='tryagain'>Form Error: " + errorMsg + "</p>";
+				form.innerHTML += "<p id='errormessage' class='tryagain'>Form Error: " + errorMsg + "</p>";
 				deleteMessageOnClick();
 			},
 			contentType: 'application/json'
