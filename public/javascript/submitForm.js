@@ -2,14 +2,16 @@ window.addEventListener("load", function() {
 	function sendForm(form) {
 		console.log("Sending form");
 		
-		function submitSuccess() {
+		function submitSuccess(json) {
 			// TODO replace with notification using express-validator errors
-			alert('Form submitted successfully.');
+			//alert('Form submitted successfully.');
+			console.log(JSON.stringify(json));
 		}
 
-		function submitFail() {
+		function submitFail(json) {
 			// TODO replace with notification using express-validator errors
-			alert('Something went wrong.');
+			//alert('Something went wrong.');
+			console.log(json);
 		}
 
 		const formData = new FormData(form);
@@ -20,8 +22,8 @@ window.addEventListener("load", function() {
 			type: "POST",
 			url: postUrl,
 			data: json,
-			success: submitSuccess,
-			error: submitFail,
+			success: submitSuccess(json),
+			error: submitFail(json),
 			contentType: 'application/json'
 		});
 	}
