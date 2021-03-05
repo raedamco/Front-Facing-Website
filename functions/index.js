@@ -1,3 +1,6 @@
+/**
+ * @author Ryan Dean Kirkpatrick
+ */
 'use strict';
 
 // Firebase function for node server

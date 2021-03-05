@@ -5,21 +5,23 @@
 	</article>
 	<article>
 		<form>
+			<!-- Custom form message -->
+			<script>let confirmationMsg = "<p>Got it. Keep an eye out for an email coming your way.</p><p>We will send you an invitation link as soon as possible. </p>";</script>
 			<fieldset>
 				<legend>Name *</legend>
 				<div class="alignleft fifty">
-					<input class="maxwidth" name="firstname" type="text"  />
+					<input class="maxwidth" name="firstname" type="text" required />
 					<label for="firstname">First Name</label>
 				</div>
 				<div class="alignright fifty">
-					<input class="maxwidth" name="lastname" type="text"  />
+					<input class="maxwidth" name="lastname" type="text" required />
 					<label for="lastname">Last Name</label>
 				</div>
 				<br class="clear"/>
 			</fieldset>
 			<fieldset class="email">
 				<label for="email">Email *</label>
-				<input class="maxwidth" name="email" type="email"  />
+				<input class="maxwidth" name="email" type="email" required />
 			</fieldset>
 			<fieldset>
 				<input class="button" type="submit" value="Join" />
