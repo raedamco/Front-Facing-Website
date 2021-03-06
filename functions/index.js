@@ -11,10 +11,12 @@ const exphbs = require('express-handlebars');
 const app = express();
 // For Google Sheets API
 const {google} = require('googleapis');
-// Fro string formatting
+// For string formatting
 const util = require('util');
 // Validator for form input
 const {body, validationResult} = require('express-validator');
+// For sending emails
+const nodemailer = require('nodemailer');
 
 // Setup express/handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -137,3 +139,23 @@ function appendSheetRow(jwt, apiKey, spreadsheetId, range, row) {
 		}
 	});
 }
+
+// Node mailer
+let transporter = nodemailer.createTransport({
+	
+});
+
+let mailOption = {
+	from: ''
+}
+
+transporter.sendMail(mailOptions, (error, info) => {
+	if (error)
+	{
+		console.log(error);
+	}
+	else
+	{
+		console.log('Email sent: ' + info.response);
+	}
+});
