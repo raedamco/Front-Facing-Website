@@ -35,16 +35,20 @@ console.log("======== Server Started ========");
 // Express routes
 // - Landing page
 app.get('/', (req, res) => {
-	if (typeof(req.query.cache) == undefined || req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
-		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+	if (typeof(req.query.cache) == undefined) {
+		if (req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
+			res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+		}
 	}
 	res.status(200).render('homepage');
 });
 
 // - Other pages
 app.get('/:pageTitle', (req, res, next) => {
-	if (typeof(req.query.cache) == undefined || req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
-		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+	if (typeof(req.query.cache) == undefined) {
+		if (req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
+			res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+		}
 	}
 	let pageTitle = parsePageTitle(req.params.pageTitle);
 	res.status(200).render(req.params.pageTitle, {
@@ -178,9 +182,7 @@ body('sector').isLength({min: 1}).withMessage("Missing sector"),
 
 // - Error page
 app.get('*', (req, res) => {
-	if (typeof(req.query.cache) == undefined || req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
-		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-	}
+	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	res.status(404).render('404', {
 		pageTitle: "Error"
 	});
