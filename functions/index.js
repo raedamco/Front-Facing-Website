@@ -30,7 +30,7 @@ process.on('unhandledRejection', error => {
 	console.log('unhandledRejection', error.message);
 });
 
-console.log("======== Server Started ========");
+console.log("======== Starting Server ========");
 
 // Express routes
 // - Landing page
@@ -290,3 +290,5 @@ function sendMail(mailOptions)
 		transporter.close();
 	});
 }
+
+console.log("======== Server Setup Complete ========");
