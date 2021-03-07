@@ -53,12 +53,6 @@ main p.small {
 	font-size: calc((1 - 1) * 1.2vw + 1rem);
 }
 
-/* TODO remove */
-.detect-mobile {
-	height: 10px;
-	background-color: green;
-}
-
 /* anchors */
 a img {border: 0 solid transparent;}
 a {
@@ -110,6 +104,7 @@ button, .button {
 	/* remove default button css */
 	font:inherit;
 	border:0px solid white;
+	outline:none;
 	/* animation */
 	transition: .1s opacity linear;
 	/* border radius */
@@ -203,19 +198,39 @@ select {
 	color:black; /* fallback */
 	color:var(--background-color);
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
-	font-weight:300; 
+	font-weight:300;
 	text-align:center;
 	max-width:1900px;
-	padding:2%;
+	padding:3%;
 	position:fixed;
-	top: 50%; 
-	left: 50%; 
+	top: 50%;
+	left: 50%;
 	transform:translate(-50%,-50%);
 	z-index:1001;
 	
 }
 #messagecontainer p {
 	margin: 0 0 1rem 0;
+}
+#messagecontainer p:last-child {
+	margin:0;
+}
+#messagecontainer .close {
+	background-color:transparent;
+	border:none;
+	outline:none;
+	position:absolute;
+	top:0;
+	right:0;
+	height:30px;
+	width:30px;
+	padding: 0px;
+	text-align: center;
+	/* animation */
+	transition: .1s opacity linear;
+}
+#messagecontainer .close:hover {
+	opacity:0.6;
 }
 #messagecontainer .button, #messagecontainer .button-small {
 	background-color:black; /* fallback */

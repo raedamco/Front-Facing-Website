@@ -18,25 +18,25 @@
 		</fieldset>
 		<fieldset class="email">
 			<label for="email">Email *</label>
-			<input class="maxwidth" name="email" type="email" pattern="" required />
+			<input class="maxwidth" name="email" type="email" required />
 		</fieldset>
 		<fieldset>
 			<label for="phone">Phone *</label>
 			<p class="maxwidth description">Contact number</p>
 			<div class="phone">
-				<input name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="###-###-####" required />
+				<input name="phone" type="tel" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onBlur="addDashes(this)" placeholder="###-###-####" required />
 			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Address *</legend>
 			<p class="maxwidth description">Address of intended usage</p>
 			<div class="address">
-				<input class="maxwidth" name="address-1" type="text" required />
-				<label for="address-1">Address 1</label>
+				<input class="maxwidth" name="address1" type="text" required />
+				<label for="address1">Address 1</label>
 			</div>
 			<div class="address">
-				<input class="maxwidth" name="address-2" type="text" required />
-				<label for="address-2">Address 2</label>
+				<input class="maxwidth" name="address2" type="text" />
+				<label for="address2">Address 2</label>
 			</div>
 			<div class="city">
 				<input class="maxwidth" name="city" type="text" required />
@@ -71,4 +71,27 @@
 			<input class="button" type="submit" value="Send" />
 		</fieldset>
 	</form>
+	<script>
+		// Add dashes to the phone input box
+		function addDashes(f)
+		{	
+			let tempV = f.value.replace(/-/gi, "");
+			f.value = tempV.slice(0,3)+"-"+tempV.slice(3,6)+"-"+tempV.slice(6,10);
+		}
+		$('div.phone input').keydown(function (e) {
+			var key = e.charCode || e.keyCode || 0;
+			$text = $(this); 
+			if (key !== 8 && key !== 9) {
+				if ($text.val().length === 3) {
+					$text.val($text.val() + '-');
+				}
+				if ($text.val().length === 7) {
+					$text.val($text.val() + '-');
+				}
+
+			}
+
+			return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+		})
+	</script>
 </main>

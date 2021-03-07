@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 			data: json,
 			success: (data) => {
 				// Display confirmation message to user.
-				if (confirmationMsg == null) {
+				if (typeof(confirmationMsg) !== undefined) {
 					// Display default message if custom message is missing.
 					CreateMessage("confirmation", "<p>Thank you!</p>");
 				}
