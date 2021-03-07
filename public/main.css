@@ -217,6 +217,7 @@ select {
 }
 #messagecontainer .close {
 	background-color:transparent;
+	color:inherit;
 	border:none;
 	outline:none;
 	position:absolute;
