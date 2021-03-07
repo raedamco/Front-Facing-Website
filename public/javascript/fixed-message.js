@@ -14,10 +14,12 @@ function CreateMessage(msgClass, msgHTML)
 
 	console.log("Message:"  + msgHTML);
 	// Add error message to form without clearing entered form data
-	$("body").append("<div id='messagecontainer' class='" + msgClass + "'>" + msgHTML + "</div>");
+	let closeBtnTxt = "<button class='close'>x</button>";
+	$("body").append("<div id='messagecontainer' class='" + msgClass + "'>" + closeBtnTxt + msgHTML + "</div>");
 
 	// Delete message on click
-	document.addEventListener('click', (event) => {
+	let closeBtn = document.getElementById("messagecontainer").firstChild;
+	closeBtn.addEventListener('click', (event) => {
 		DeleteMessage();
 	});
 }
@@ -27,7 +29,7 @@ function CreateMessage(msgClass, msgHTML)
  */
 function DeleteMessage()
 {
-	const message = document.getElementById("messagecontainer")
+	const message = document.getElementById("messagecontainer");
 	if (message != null) {
 		message.remove();
 	}
