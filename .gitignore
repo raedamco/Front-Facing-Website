@@ -66,3 +66,6 @@ node_modules/
 .env
 
 package-lock.json
+credentials.json
+email.json
+api_key.json
