@@ -12,7 +12,6 @@ function CreateMessage(msgClass, msgHTML)
 	// Delete old message
 	DeleteMessage();
 
-	console.log("Message:"  + msgHTML);
 	// Add error message to form without clearing entered form data
 	let closeBtnTxt = "<button class='close'>x</button>";
 	$("body").append("<div id='messagecontainer' class='" + msgClass + "'>" + closeBtnTxt + msgHTML + "</div>");
