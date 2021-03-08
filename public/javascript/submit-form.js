@@ -27,6 +27,7 @@ window.addEventListener("load", () => {
 					CreateMessage("confirmation", confirmationMsg);
 				}
 				analytics.logEvent('form_success', {postUrl: postUrl, data: json});
+				form.reset();
 			},
 			error: (data) => {
 				// Combine error messages from the node server into a single string.
