@@ -142,6 +142,7 @@ button:hover, .button:hover, [class^="socicon-"]:hover, [class*=" socicon-"]:hov
 .flex-item {
 	flex: 1;
 	text-align: center;
+	margin-top:3%;
 }
 
 /* form */
@@ -181,8 +182,11 @@ input.button {
 	float:right;
 	width:28%;
 }
-.zip, .phone {
+.zip {
 	width:36%;
+}
+.phone {
+	width: 100%;
 }
 textarea {
 	height:100px;
@@ -197,15 +201,14 @@ select {
 	background-color:var(--text-color);
 	color:black; /* fallback */
 	color:var(--background-color);
-	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 	font-weight:300;
 	text-align:center;
+	width:100%;
 	max-width:1900px;
 	padding:3%;
+	/* position */
 	position:fixed;
-	top: 50%;
-	left: 50%;
-	transform:translate(-50%,-50%);
+	bottom:0px;
 	z-index:1001;
 	
 }
@@ -419,10 +422,21 @@ p:last-child {
 
 /* ======================== Tablet ========================= */
 @media all and (min-width:900px) {
-	.detect-mobile {
-		background-color: yellow;
+	#messagecontainer {
+		width:auto;
+		font-size: calc((1.5 - 1) * 1.2vw + 1rem);
+		/* position */
+		top: 50%;
+		left: 50%;
+		bottom:unset;
+		transform:translate(-50%,-50%);
 	}
-	
+
+	/* form */
+	.phone {
+		width: 36%;
+	}
+
 	/* header */
 	#header {
 		display: flex;
@@ -464,13 +478,13 @@ p:last-child {
 	.flex-container {
 		flex-direction: row;
 	}
+	.flex-item {
+		margin-top:0;
+	}
 }
 
 /* ======================== Desktop ======================== */
 @media all and (min-width:1200px) {
-	.detect-mobile {
-		background-color: red;
-	}
 }
 
 @media all and (min-width:2000px) {
