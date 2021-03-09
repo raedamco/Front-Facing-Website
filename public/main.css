@@ -142,6 +142,7 @@ button:hover, .button:hover, [class^="socicon-"]:hover, [class*=" socicon-"]:hov
 .flex-item {
 	flex: 1;
 	text-align: center;
+	margin-top:3%;
 }
 
 /* form */
@@ -476,6 +477,9 @@ p:last-child {
 	/* footer */
 	.flex-container {
 		flex-direction: row;
+	}
+	.flex-item {
+		margin-top:0;
 	}
 }
 
