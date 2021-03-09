@@ -78,7 +78,7 @@ body('email').isEmail().withMessage("Invalid email"),
 	let jwt = getJwt();
 	let apiKey = getApiKey();
 	// Google sheet with spreadsheetId needs to be shared with: spreadsheet-writer@theory-parking.iam.gserviceaccount.com
-	let spreadsheetId = '1I2KGPmvnKbWW8tOTfdGlrgvwI3Il9zrAKx9Xs6WY05Y';		//TODO replace with: 1Bp44uRyXGV30PkLoKspN_GMH1_xNzm55_om9PVis0jg
+	let spreadsheetId = '1Bp44uRyXGV30PkLoKspN_GMH1_xNzm55_om9PVis0jg';
 	let range = 'A1:C1';
 	let row = [getDate(), req.body.firstname + " " + req.body.lastname, req.body.email];
 	appendSheetRow(jwt, apiKey, spreadsheetId, range, row);
