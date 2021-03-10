@@ -35,20 +35,20 @@ console.log("======== Starting Server ========");
 // Express routes
 // - Landing page
 app.get('/', (req, res) => {
-	if (typeof(req.query.cache) == undefined) {
-		if (req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
-			res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-		}
+	// First part relies on falsey values: 0, null, false, undefined
+	if (req.query.cache || typeof(req.query.cache) == undefined)
+	{
+		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	}
 	res.status(200).render('homepage');
 });
 
 // - Other pages
 app.get('/:pageTitle', (req, res, next) => {
-	if (typeof(req.query.cache) == undefined) {
-		if (req.query.cache == 1 || req.query.cache.toLowerCase() == "true") {
-			res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-		}
+	// First part relies on falsey values: 0, null, false, undefined
+	if (req.query.cache || typeof(req.query.cache) == undefined)
+	{
+		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	}
 	let pageTitle = parsePageTitle(req.params.pageTitle);
 	res.status(200).render(req.params.pageTitle, {
@@ -72,7 +72,7 @@ body('email').isEmail().withMessage("Invalid email"),
 	if (!errors.isEmpty()) {
 		return res.status(400).send({ errors: errors.array() });
 	}
-	console.log("Form passed validation.");
+	console.log("Early access form passed validation.");
 
 	// Append to data to google sheet
 	let jwt = getJwt();
@@ -93,7 +93,7 @@ body('email').isEmail().withMessage("Invalid email"),
 	if (!errors.isEmpty()) {
 		return res.status(400).send({ errors: errors.array() });
 	}
-	console.log("Form passed validation.");
+	console.log("Newsletter form passed validation.");
 
 	// Append to data to google sheet
 	let jwt = getJwt();
@@ -117,7 +117,7 @@ body('message').isLength({min: 1}).withMessage("Missing message"),
 	if (!errors.isEmpty()) {
 		return res.status(400).send({ errors: errors.array() });
 	}
-	console.log("Form passed validation.");
+	console.log("Contact form passed validation.");
 
 	let mailOptions = {
 		from: req.body.email,
@@ -151,7 +151,7 @@ body('sector').isLength({min: 1}).withMessage("Missing sector"),
 	if (!errors.isEmpty()) {
 		return res.status(400).send({ errors: errors.array() });
 	}
-	console.log("Form passed validation.");
+	console.log("Join form passed validation.");
 
 	// Compose text for email
 	let mailText = "Name: " + req.body.firstname + " " + req.body.lastname +
@@ -189,8 +189,8 @@ app.get('*', (req, res) => {
 });
 
 // Define the Firebase function that will act as Express application
-// Note: This `app` must match with `/firebase.json` rewrites rule.
-exports.app = functions.https.onRequest(app);
+// Note: This `frontFacingNodeServer` must match with `/firebase.json` rewrites rule.
+exports.frontFacingNodeServer = functions.https.onRequest(app);
 
 // Helper functions
 function parsePageTitle(pageTitle) {
@@ -241,6 +241,7 @@ function appendSheetRow(jwt, apiKey, spreadsheetId, range, row) {
 		resource: {values: [row]}
 	}, function(err, res) {
 		if (err) {
+			console.error('Error: ' + err);
 			throw err;
 		}
 		else
