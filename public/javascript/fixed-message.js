@@ -52,17 +52,12 @@ window.addEventListener("load", () => {
 		if (!("message" in sessionStorage))
 		{
 			await sleep(2000);
-			console.log("Displaying early access message.");
 			CreateMessage("",
 				"<h1>Early Access</h1>" +
 				"<p>Commute with added insight and convenience.</p>" +
 				"<p>Join the list of users with early access to download our free mobile app.</p>" +
 				"<a class='button' href='/early-access'>Sign up</a>");
 			sessionStorage.setItem("message", true);
-		}
-		else
-		{
-			console.log("Early access message already displayed this session.");
 		}
 	}
 
