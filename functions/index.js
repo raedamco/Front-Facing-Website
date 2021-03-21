@@ -70,9 +70,7 @@ app.post('/early-access-form',
 body('firstname').isLength({min: 1}).withMessage("Missing first name"),
 body('lastname').isLength({min: 1}).withMessage("Missing last name"),
 body('email').isEmail().withMessage("Invalid email"),
-body('token').custom(value => {
-	return validateScore(value);
-}),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -95,6 +93,7 @@ body('token').custom(value => {
 
 app.post('/newsletter-form',
 body('email').isEmail().withMessage("Invalid email"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -119,6 +118,7 @@ body('firstname').isLength({min: 1}).withMessage("Missing first name"),
 body('lastname').isLength({min: 1}).withMessage("Missing last name"),
 body('email').isEmail().withMessage("Invalid email"),
 body('message').isLength({min: 1}).withMessage("Missing message"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -153,6 +153,7 @@ body('zip').isLength({min: 1}).withMessage("Missing zip"),
 body('country').isLength({min: 1}).withMessage("Missing country"),
 //body('website').isURL().withMessage("Invalid website"),
 body('sector').isLength({min: 1}).withMessage("Missing sector"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -298,17 +299,17 @@ function sendMail(mailOptions)
 
 // reCaptcha
 async function getScore(token) {
-	const response = await axios.post(`https://recaptcha.google.com/recaptcha/api/siteverify?secret=${apiKeyFile.recaptchaSecretKey}&response=${token}`);
+	const response = await axios.get(`https://recaptcha.google.com/recaptcha/api/siteverify?secret=${apiKeyFile.recaptchaSecretKey}&response=${token}`);
 	return response.data.score;
 }
 
 function validateScore(token) {
-	console.log("Validate reCaptcha score");
 	return getScore(token).then(score => {
-		console.log("Score: ", score);
 		if (!score || score < 0.5) {
+			console.log("Rejected reCaptcha score: ", score);
 			return Promise.reject('Bot detected');
 		}
+		return Promise.resolve();
 	});
 }
 
