@@ -4,8 +4,6 @@
 
 window.addEventListener("load", () => {
 	function sendForm(form) {
-		console.log("Sending form");
-
 		const formData = new FormData(form);
 		const json = JSON.stringify(Object.fromEntries(formData.entries()));
 		const postUrl = window.location.pathname + "-form";
@@ -48,11 +46,21 @@ window.addEventListener("load", () => {
 	// Get reCaptcha token
 	function getToken(form) {
 		//Generate token
-		if (recaptchaKey) {
-			grecaptcha.execute(recaptchaKey, { action: 'form' })	// reCaptchaKey set in main.handlebars
+		if (recaptchaKey) {		// reCaptchaKey set in main.handlebars
+			grecaptcha.execute(recaptchaKey, { action: 'form' })
 			.then((token) => {
-				console.log("token: ", token);	//TODO remove token log
-				form.append('<input type="hidden" id="token" name="token">' + token + '</input>');
+				let tokenInput = document.getElementById("token");
+				if(tokenInput)
+				{
+					tokenInput.value = token;
+				}
+				else
+				{
+					// Append reCaptcha token input if it is missing
+					$(form).append("<input type='hidden' id='token' name='token' value='" + token + "'/>");
+				}
+				// Send Form to server
+				sendForm(form);
 				Promise.resolve();
 			})
 		}
@@ -67,7 +75,6 @@ window.addEventListener("load", () => {
 			event.preventDefault();
 
 			getToken(form);
-			sendForm(form);
 		});
 	}
 })
