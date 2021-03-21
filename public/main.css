@@ -53,6 +53,10 @@ main p.small {
 	font-size: calc((1 - 1) * 1.2vw + 1rem);
 }
 
+[hidden] {
+	display: none !important;
+}
+
 /* anchors */
 a img {border: 0 solid transparent;}
 a {

@@ -38,6 +38,8 @@
 		<script async type="text/javascript" src="/javascript/fixed-message.js"></script>
 		<script async type="text/javascript" src="/javascript/submit-form.js"></script>
 		<script defer type="text/javascript" src="/javascript/toggle-nav.js"></script>
+		{{#if siteKey}}<script async src="https://www.google.com/recaptcha/api.js?render={{siteKey}}"></script>
+		<script>let recaptchaKey="{{siteKey}}"</script>{{/if}}
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script defer src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 		<!-- TODO: Add SDKs for Firebase products that you want to use
