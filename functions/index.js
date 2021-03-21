@@ -82,8 +82,7 @@ body('token').custom(value => validateScore(value)),
 	let jwt = getJwt();
 	let apiKey = apiKeyFile.sheetsKey;
 	// Google sheet with spreadsheetId needs to be shared with: spreadsheet-writer@theory-parking.iam.gserviceaccount.com
-	//let spreadsheetId = '1Bp44uRyXGV30PkLoKspN_GMH1_xNzm55_om9PVis0jg';	//TODO revert back to original spreadsheet
-	let spreadsheetId = '1I2KGPmvnKbWW8tOTfdGlrgvwI3Il9zrAKx9Xs6WY05Y';
+	let spreadsheetId = '1Bp44uRyXGV30PkLoKspN_GMH1_xNzm55_om9PVis0jg';
 	let range = 'A1:C1';
 	let row = [getDate(), req.body.firstname + " " + req.body.lastname, req.body.email];
 	appendSheetRow(jwt, apiKey, spreadsheetId, range, row);
