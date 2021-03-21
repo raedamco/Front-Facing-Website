@@ -45,6 +45,19 @@ window.addEventListener("load", () => {
 		});
 	}
 
+	// Get reCaptcha token
+	function getToken(form) {
+		//Generate token
+		if (recaptchaKey) {
+			grecaptcha.execute(recaptchaKey, { action: 'form' })	// reCaptchaKey set in main.handlebars
+			.then((token) => {
+				console.log("token: ", token);	//TODO remove token log
+				form.append('<input type="hidden" id="token" name="token">' + token + '</input>');
+				Promise.resolve();
+			})
+		}
+	}
+
 	// Selects the first form in the DOM. Should only ever be one form.
 	const form = document.querySelector("form");
 
@@ -53,6 +66,7 @@ window.addEventListener("load", () => {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 
+			getToken(form);
 			sendForm(form);
 		});
 	}
