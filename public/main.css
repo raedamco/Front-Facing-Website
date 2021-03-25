@@ -57,10 +57,16 @@ main p.small {
 	display: none !important;
 }
 
+.grecaptcha-badge {
+	visibility: hidden;
+}
+
 /* anchors */
 a img {border: 0 solid transparent;}
 a {
 	text-decoration: none;
+	color: white;	/* fallback */
+	color: var(--text-color);
 	/* animation */
 	transition: .1s opacity linear;
 }
@@ -92,6 +98,10 @@ h1, h2, h3, h4 {
 	line-height: 1.2em;
 	font-weight: 500;
 	margin: 2rem 0;
+}
+
+small {
+	margin: 1.12em 0;
 }
 
 button, .button {
@@ -345,11 +355,6 @@ font: acumin pro
 #footer {
 	padding: 3.3vmax 3vw;
 	flex-shrink:0;
-}
-#footer a {
-	text-decoration: none;
-	color: white;	/* fallback */
-	color: var(--text-color);
 }
 #footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
