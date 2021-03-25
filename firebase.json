@@ -9,8 +9,8 @@
     ],
     "rewrites": [
       {
-         "source": "**",
-         "function": "frontFacingNodeServer"      
+        "source": "**",
+        "function": "frontFacingNodeServer"      
       }
     ]
   },
