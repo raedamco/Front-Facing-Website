@@ -42,7 +42,9 @@ app.get('/', (req, res) => {
 	{
 		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	}
-	res.status(200).render('homepage');
+	res.status(200).render('homepage', {
+		siteKey: apiKeyFile.recaptchaSiteKey
+	});
 });
 
 // - Other pages
@@ -191,7 +193,8 @@ body('token').custom(value => validateScore(value)),
 app.get('*', (req, res) => {
 	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	res.status(404).render('404', {
-		pageTitle: "Error"
+		pageTitle: "Error",
+		siteKey: apiKeyFile.recaptchaSiteKey
 	});
 });
 
