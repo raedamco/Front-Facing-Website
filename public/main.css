@@ -49,7 +49,7 @@ main article {
 main p {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 }
-main p.small {
+main p.small, small {
 	font-size: calc((1 - 1) * 1.2vw + 1rem);
 }
 
@@ -98,10 +98,6 @@ h1, h2, h3, h4 {
 	line-height: 1.2em;
 	font-weight: 500;
 	margin: 2rem 0;
-}
-
-small {
-	margin: 1.12em 0;
 }
 
 button, .button {
@@ -441,6 +437,8 @@ p:last-child {
 		transform:translate(-50%,-50%);
 	}
 
+	.tfifty {width:49%;}
+
 	/* form */
 	.phone {
 		width: 36%;
@@ -494,6 +492,7 @@ p:last-child {
 
 /* ======================== Desktop ======================== */
 @media all and (min-width:1200px) {
+	.dfifty {width:49%;}
 }
 
 @media all and (min-width:2000px) {

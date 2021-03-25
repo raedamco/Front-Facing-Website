@@ -14,7 +14,8 @@ window.addEventListener("load", () => {
 			data: json,
 			success: (data) => {
 				// Display confirmation message to user.
-				if (typeof(confirmationMsg) !== undefined) {
+				if (typeof(confirmationMsg) !== undefined)
+				{
 					// Display default message if custom message is missing.
 					CreateMessage("confirmation", "<p>Thank you!</p>");
 				}
@@ -31,7 +32,8 @@ window.addEventListener("load", () => {
 				// Combine error messages from the node server into a single string.
 				let errorMsg = "<p><strong>Try Again:</strong>";
 				let errors = data.responseJSON.errors;
-				for(let i = 0; i < errors.length; i++) {
+				for(let i = 0; i < errors.length; i++)
+				{
 					errorMsg += "<br />" + errors[i].msg;
 				}
 				errorMsg += "</p>";
@@ -70,8 +72,9 @@ window.addEventListener("load", () => {
 	const form = document.querySelector("form");
 
 	// Override form default submission
-	if (form != null) {
-		$(form).append("<small>This site is protected by reCAPTCHA and the Google <a href='https://policies.google.com/privacy'>Privacy Policy</a> and <a href='https://policies.google.com/terms'>Terms of Service</a> apply.</small>");
+	if (form != null)
+	{
+		$(form).append("<p class='small'>This site is protected by reCAPTCHA and the Google <a href='https://policies.google.com/privacy'>Privacy Policy</a> and <a href='https://policies.google.com/terms'>Terms of Service</a> apply.</p>");
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 
