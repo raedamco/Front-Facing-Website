@@ -50,6 +50,7 @@ main p {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 }
 main p.small, small {
+	display: block;
 	font-size: calc((1 - 1) * 1.2vw + 1rem);
 }
 
@@ -168,7 +169,7 @@ fieldset {
 	border: 0px solid var(--background-color);
 	padding:0;
 }
-form div, label, .email, .website, .sector {
+fieldset, form .margin {
 	margin-bottom:24px;
 }
 input, textarea {
