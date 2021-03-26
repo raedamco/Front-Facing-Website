@@ -18,6 +18,8 @@ const {body, validationResult} = require('express-validator');
 // For sending emails
 const nodemailer = require('nodemailer');
 const OAuth2 = google.auth.OAuth2;
+// For HTTP requests
+const axios = require('axios');
 
 // Setup express/handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -40,7 +42,9 @@ app.get('/', (req, res) => {
 	{
 		res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	}
-	res.status(200).render('homepage');
+	res.status(200).render('homepage', {
+		siteKey: apiKeyFile.recaptchaSiteKey
+	});
 });
 
 // - Other pages
@@ -52,7 +56,8 @@ app.get('/:pageTitle', (req, res, next) => {
 	}
 	let pageTitle = parsePageTitle(req.params.pageTitle);
 	res.status(200).render(req.params.pageTitle, {
-		pageTitle: pageTitle
+		pageTitle: pageTitle,
+		siteKey: apiKeyFile.recaptchaSiteKey
 	}, (err, html) => {
 		if (err) {
 			next();
@@ -67,6 +72,7 @@ app.post('/early-access-form',
 body('firstname').isLength({min: 1}).withMessage("Missing first name"),
 body('lastname').isLength({min: 1}).withMessage("Missing last name"),
 body('email').isEmail().withMessage("Invalid email"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -76,7 +82,7 @@ body('email').isEmail().withMessage("Invalid email"),
 
 	// Append to data to google sheet
 	let jwt = getJwt();
-	let apiKey = getApiKey();
+	let apiKey = apiKeyFile.sheetsKey;
 	// Google sheet with spreadsheetId needs to be shared with: spreadsheet-writer@theory-parking.iam.gserviceaccount.com
 	let spreadsheetId = '1Bp44uRyXGV30PkLoKspN_GMH1_xNzm55_om9PVis0jg';
 	let range = 'A1:C1';
@@ -88,6 +94,7 @@ body('email').isEmail().withMessage("Invalid email"),
 
 app.post('/newsletter-form',
 body('email').isEmail().withMessage("Invalid email"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -97,7 +104,7 @@ body('email').isEmail().withMessage("Invalid email"),
 
 	// Append to data to google sheet
 	let jwt = getJwt();
-	let apiKey = getApiKey();
+	let apiKey = apiKeyFile.sheetsKey;
 	// Google sheet with spreadsheetId needs to be shared with: spreadsheet-writer@theory-parking.iam.gserviceaccount.com
 	let spreadsheetId = '1n-EwrIJy4-XgvWvv8-GK8au7gcbHCRLz8Jj6ME7LTKA';
 	let range = 'A1:B1';
@@ -112,6 +119,7 @@ body('firstname').isLength({min: 1}).withMessage("Missing first name"),
 body('lastname').isLength({min: 1}).withMessage("Missing last name"),
 body('email').isEmail().withMessage("Invalid email"),
 body('message').isLength({min: 1}).withMessage("Missing message"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -146,6 +154,7 @@ body('zip').isLength({min: 1}).withMessage("Missing zip"),
 body('country').isLength({min: 1}).withMessage("Missing country"),
 //body('website').isURL().withMessage("Invalid website"),
 body('sector').isLength({min: 1}).withMessage("Missing sector"),
+body('token').custom(value => validateScore(value)),
 (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -184,7 +193,8 @@ body('sector').isLength({min: 1}).withMessage("Missing sector"),
 app.get('*', (req, res) => {
 	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
 	res.status(404).render('404', {
-		pageTitle: "Error"
+		pageTitle: "Error",
+		siteKey: apiKeyFile.recaptchaSiteKey
 	});
 });
 
@@ -193,6 +203,8 @@ app.get('*', (req, res) => {
 exports.frontFacingNodeServer = functions.https.onRequest(app);
 
 // Helper functions
+let apiKeyFile = require('./keys.json');
+
 function parsePageTitle(pageTitle) {
 	pageTitle = pageTitle.replace("-", " ");
 	pageTitle.replace("%20", " ");
@@ -223,11 +235,6 @@ function getJwt() {
 		credentials.client_email, null, credentials.private_key,
 		['https://www.googleapis.com/auth/spreadsheets']
 	);
-}
-
-function getApiKey() {
-	let apiKeyFile = require("./api_key.json");
-	return apiKeyFile.key;
 }
 
 function appendSheetRow(jwt, apiKey, spreadsheetId, range, row) {
@@ -289,6 +296,22 @@ function sendMail(mailOptions)
 			console.log('Email sent: ' + info.response);
 		}
 		transporter.close();
+	});
+}
+
+// reCaptcha
+async function getScore(token) {
+	const response = await axios.get(`https://recaptcha.google.com/recaptcha/api/siteverify?secret=${apiKeyFile.recaptchaSecretKey}&response=${token}`);
+	return response.data.score;
+}
+
+function validateScore(token) {
+	return getScore(token).then(score => {
+		if (!score || score < 0.5) {
+			console.log("Rejected reCaptcha score: ", score);
+			return Promise.reject('Bot detected');
+		}
+		return Promise.resolve();
 	});
 }
 

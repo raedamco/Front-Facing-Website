@@ -49,14 +49,25 @@ main article {
 main p {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 }
-main p.small {
+main p.small, small {
+	display: block;
 	font-size: calc((1 - 1) * 1.2vw + 1rem);
+}
+
+[hidden] {
+	display: none !important;
+}
+
+.grecaptcha-badge {
+	visibility: hidden;
 }
 
 /* anchors */
 a img {border: 0 solid transparent;}
 a {
 	text-decoration: none;
+	color: white;	/* fallback */
+	color: var(--text-color);
 	/* animation */
 	transition: .1s opacity linear;
 }
@@ -158,7 +169,7 @@ fieldset {
 	border: 0px solid var(--background-color);
 	padding:0;
 }
-form div, label, .email, .website, .sector {
+fieldset, form .margin {
 	margin-bottom:24px;
 }
 input, textarea {
@@ -342,11 +353,6 @@ font: acumin pro
 	padding: 3.3vmax 3vw;
 	flex-shrink:0;
 }
-#footer a {
-	text-decoration: none;
-	color: white;	/* fallback */
-	color: var(--text-color);
-}
 #footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
 }
@@ -432,6 +438,8 @@ p:last-child {
 		transform:translate(-50%,-50%);
 	}
 
+	.tfifty {width:49%;}
+
 	/* form */
 	.phone {
 		width: 36%;
@@ -485,6 +493,7 @@ p:last-child {
 
 /* ======================== Desktop ======================== */
 @media all and (min-width:1200px) {
+	.dfifty {width:49%;}
 }
 
 @media all and (min-width:2000px) {
