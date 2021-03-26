@@ -22,14 +22,14 @@
 		</fieldset>
 		<fieldset>
 			<label for="phone">Phone *</label>
-			<p class="maxwidth description">Contact number</p>
+			<small class="maxwidth description">Contact number</small>
 			<div class="phone">
 				<input name="phone" type="tel" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onBlur="addDashes(this)" placeholder="###-###-####" required />
 			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Address *</legend>
-			<p class="maxwidth description">Address of intended usage</p>
+			<small class="maxwidth description">Address of intended usage</small>
 			<div class="address">
 				<input class="maxwidth" name="address1" type="text" required />
 				<label for="address1">Address 1</label>
@@ -61,11 +61,14 @@
 		</fieldset>
 		<fieldset class="sector">
 			<legend>Company Sector *</legend>
-			<p class="maxwidth description">What sector does your company fall under?</p>
+			<small class="maxwidth description">What sector does your company fall under?</small>
 			<select name="sector" required>
 				<option value="Public">Public</option>
 				<option value="Private">Private</option>
 			</select>
+		</fieldset>
+		<fieldset>
+			{{>reCaptcha-tos}}
 		</fieldset>
 		<fieldset>
 			<input class="button" type="submit" value="Send" />

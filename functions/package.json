@@ -2,6 +2,7 @@
 	"name": "raedam-front-facing-website",
 	"description": "",
 	"dependencies": {
+		"axios": "^0.21.1",
 		"express": "^4.17.1",
 		"express-handlebars": "^3.1.0",
 		"express-validator": "^6.10.0",
