@@ -361,6 +361,16 @@ p:last-child {
 	margin-bottom:0;
 }
 
+/* page specific */
+#services img {
+	transform:scale(0.85);
+}
+
+#services p {
+	max-width:280px;
+	margin:0 auto;
+}
+
 /* embellishments */
 
 /* icons */
