@@ -16,10 +16,12 @@ gtag('js', new Date());
 if (window.location.hostname == "localhost")
 {
 	//TODO Can be removed for deployment
+	gtag('config', 'UA-148151012-3', {'debug_mode':true});
 	gtag('config', 'G-6S8CGR6TWP', {'debug_mode':true});
 }
 else
 {
+	gtag('config', 'UA-148151012-3');
 	gtag('config', 'G-6S8CGR6TWP');
 }
 // Initialize Firebase
