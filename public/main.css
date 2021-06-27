@@ -539,6 +539,29 @@ svg.city2-bottom {
 	padding-top: 0;
 }
 
+/* div.city4 {
+
+} */
+img.city4 {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+div.city4::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: var(--image-overlay);
+	z-index: 1;
+}
+svg.city4 {
+}
+
 #services img {
 	transform: scale(0.85);
 }
