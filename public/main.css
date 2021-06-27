@@ -3,6 +3,7 @@
 	--text-color: white;
 	--secondary-background-color: #323232;
 	--secondary-text-color: #a3a3a3;
+	--image-overlay: rgba(0, 50, 100, 0.8);
 }
 @font-face {
 	font-family: "San Francisco";
@@ -47,19 +48,19 @@ body {
 }
 
 main {
-	/* padding: 3vmax 6vw; */
 	position: relative;
-	padding: 0 6vw;
 	text-align: left;
 	flex: 1 0 auto;
 }
 
 main article {
-	padding: 6vmax 2vw;
+	padding: 6vmax 8vw;
+	position: relative;
 }
 
 main p {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
+	color: var(--secondary-text-color);
 }
 main p.small,
 small {
@@ -99,6 +100,10 @@ a:hover {
 a:active {
 }
 a:visited {
+}
+h1 a {
+	border-bottom: 5px solid white;
+	border-bottom: 5px solid var(--text-color);
 }
 
 h1 {
@@ -206,6 +211,9 @@ button:hover,
 	-moz-border-radius: 0.5rem; /*Firefox*/
 	border-radius: 0.5rem;
 	padding: 0 2% 5% 2%;
+}
+.flex-card * {
+	color: var(--text-color);
 }
 
 /* form */
@@ -429,39 +437,111 @@ p:last-child {
 }
 
 /* page/section specific */
+#top {
+	padding-bottom: 100px;
+}
 #top .map {
 	position: absolute;
 	top: 0;
 	right: 0;
 	z-index: -1;
 	height: 800px;
+	clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 19% 100%);
 }
-/* #top::before,
-#top::after {
-	position: absolute;
-	content: "";
-	width: 100px;
-	height: 100px;
-	background: red;
+div.city1 {
+	position: relative;
 }
-#top::before {
-	right: 0;
-} */
-
-#top .map::before {
-	position: absolute;
+div.city1::before {
 	content: "";
+	position: absolute;
 	top: 0;
-	bottom: 0;
 	left: 0;
 	height: 100%;
-	background: red;
+	width: 100%;
+	background: var(--image-overlay);
+	clip-path: polygon(0% 15%, 100% 10%, 100% 100%, 0% 100%);
+	z-index: 1;
+}
+img.city1 {
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 100%;
+	clip-path: polygon(0% 15%, 100% 10%, 100% 100%, 0% 100%);
+}
+svg.city1 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	fill: var(--background-color);
+}
+
+#easy {
+	padding-top: 0;
+}
+#easy > *:nth-child(1) {
+	margin-top: 0;
+}
+
+#app {
+	/* padding-top: 0;
+	padding-left: 0;
+	padding-right: 0; */
+	padding: 0;
+	text-align: center;
+}
+img.city2 {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+div.city2::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: var(--image-overlay);
+	z-index: 1;
+}
+svg.city2-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	fill: black;
+	fill: var(--background-color);
+}
+svg.city2-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	fill: black;
+	fill: var(--background-color);
+}
+#app #download {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 2;
+}
+
+#streamlined {
+	padding-top: 0;
 }
 
 #services img {
 	transform: scale(0.85);
 }
-
 #services p {
 	max-width: 280px;
 	margin: 0 auto;
