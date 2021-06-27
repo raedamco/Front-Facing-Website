@@ -531,26 +531,31 @@ svg.city2-bottom {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 0);
+	transform: translate(-50%, -50%);
 	z-index: 2;
+}
+#download img {
+	width: 192px;
+	-webkit-border-radius: 30px; /*Safari, Chrome*/
+	-moz-border-radius: 30px; /*Firefox*/
+	border-radius: 30px;
 }
 
 #streamlined {
 	padding-top: 0;
 }
 
-/* div.city4 {
-
-} */
-img.city4 {
+.city3 {
+	position: relative;
+}
+.city3 img {
 	position: relative;
 	top: 0;
 	left: 0;
 	right: 0;
 	width: 100%;
 }
-div.city4::before {
-	content: "";
+.city3 div {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -559,7 +564,39 @@ div.city4::before {
 	background: var(--image-overlay);
 	z-index: 1;
 }
-svg.city4 {
+svg.city3-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.city4 {
+	position: relative;
+}
+.city4 img {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+.city4 div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: var(--image-overlay);
+	z-index: 1;
+}
+svg.city4-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
 }
 
 #services img {

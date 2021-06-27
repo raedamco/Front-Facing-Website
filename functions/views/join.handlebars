@@ -1,79 +1,81 @@
 <main>
-	<div class="padding">
-		<h2>Ready to join the Raedam Network?</h2>
-		<h2>Great! We're excited to work with you.</h2>
-	</div>
-	<form>
-		<fieldset>
-			<legend>Name *</legend>
-			<div class="alignleft fifty">
-				<input class="maxwidth" name="firstname" type="text" required />
-				<label for="firstname">First Name</label>
-			</div>
-			<div class="alignright fifty">
-				<input class="maxwidth" name="lastname" type="text" required />
-				<label for="lastname">Last Name</label>
-			</div>
-			<br class="clear"/>
-		</fieldset>
-		<fieldset class="email">
-			<label for="email">Email *</label>
-			<input class="maxwidth" name="email" type="email" required />
-		</fieldset>
-		<fieldset>
-			<label for="phone">Phone *</label>
-			<small class="maxwidth description">Contact number</small>
-			<div class="phone">
-				<input name="phone" type="tel" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onBlur="addDashes(this)" placeholder="###-###-####" required />
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Address *</legend>
-			<small class="maxwidth description">Address of intended usage</small>
-			<div class="address">
-				<input class="maxwidth" name="address1" type="text" required />
-				<label for="address1">Address 1</label>
-			</div>
-			<div class="address">
-				<input class="maxwidth" name="address2" type="text" />
-				<label for="address2">Address 2</label>
-			</div>
-			<div class="city">
-				<input class="maxwidth" name="city" type="text" required />
-				<label for="city">City</label>
-			</div>
-			<div class="state">
-				<input class="maxwidth" name="state" type="text" required />
-				<label for="state">State/Province</label>
-			</div>
-			<div class="zip">
-				<input class="maxwidth" name="zip" type="text" required />
-				<label for="zip">Zip/Postal Code</label>
-			</div>
-			<div class="country">
-				<input class="maxwidth" name="country" type="text" required />
-				<label for="country">Country</label>
-			</div>
-		</fieldset>
-		<fieldset class="website">
-			<label for="website">Company Website</label>
-			<input class="maxwidth" name="website" type="url" placeholder="http://" />
-		</fieldset>
-		<fieldset class="sector">
-			<legend>Company Sector *</legend>
-			<small class="maxwidth description">What sector does your company fall under?</small>
-			<select name="sector" required>
-				<option value="Public">Public</option>
-				<option value="Private">Private</option>
-			</select>
-		</fieldset>
-		<fieldset>
-			{{>reCaptcha-tos}}
-		</fieldset>
-		<fieldset>
-			<input class="button" type="submit" value="Send" />
-		</fieldset>
-	</form>
+	<article>
+		<div class="padding">
+			<h2>Ready to join the Raedam Network?</h2>
+			<h2>Great! We're excited to work with you.</h2>
+		</div>
+		<form>
+			<fieldset>
+				<legend>Name *</legend>
+				<div class="alignleft fifty">
+					<input class="maxwidth" name="firstname" type="text" required />
+					<label for="firstname">First Name</label>
+				</div>
+				<div class="alignright fifty">
+					<input class="maxwidth" name="lastname" type="text" required />
+					<label for="lastname">Last Name</label>
+				</div>
+				<br class="clear"/>
+			</fieldset>
+			<fieldset class="email">
+				<label for="email">Email *</label>
+				<input class="maxwidth" name="email" type="email" required />
+			</fieldset>
+			<fieldset>
+				<label for="phone">Phone *</label>
+				<small class="maxwidth description">Contact number</small>
+				<div class="phone">
+					<input name="phone" type="tel" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onBlur="addDashes(this)" placeholder="###-###-####" required />
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Address *</legend>
+				<small class="maxwidth description">Address of intended usage</small>
+				<div class="address">
+					<input class="maxwidth" name="address1" type="text" required />
+					<label for="address1">Address 1</label>
+				</div>
+				<div class="address">
+					<input class="maxwidth" name="address2" type="text" />
+					<label for="address2">Address 2</label>
+				</div>
+				<div class="city">
+					<input class="maxwidth" name="city" type="text" required />
+					<label for="city">City</label>
+				</div>
+				<div class="state">
+					<input class="maxwidth" name="state" type="text" required />
+					<label for="state">State/Province</label>
+				</div>
+				<div class="zip">
+					<input class="maxwidth" name="zip" type="text" required />
+					<label for="zip">Zip/Postal Code</label>
+				</div>
+				<div class="country">
+					<input class="maxwidth" name="country" type="text" required />
+					<label for="country">Country</label>
+				</div>
+			</fieldset>
+			<fieldset class="website">
+				<label for="website">Company Website</label>
+				<input class="maxwidth" name="website" type="url" placeholder="http://" />
+			</fieldset>
+			<fieldset class="sector">
+				<legend>Company Sector *</legend>
+				<small class="maxwidth description">What sector does your company fall under?</small>
+				<select name="sector" required>
+					<option value="Public">Public</option>
+					<option value="Private">Private</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				{{>reCaptcha-tos}}
+			</fieldset>
+			<fieldset>
+				<input class="button" type="submit" value="Send" />
+			</fieldset>
+		</form>
+	</article>
 	<script>
 		// Add dashes to the phone input box
 		function addDashes(f)
