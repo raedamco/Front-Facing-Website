@@ -23,10 +23,6 @@ html {
 	-moz-box-sizing: inherit;
 	box-sizing: inherit;
 }
-html,
-body {
-	height: 100%;
-}
 body {
 	background-color: black; /* fallback */
 	background-color: var(--background-color);
@@ -329,6 +325,8 @@ the font used for the company name is only available from adobe website. just ne
 font: acumin pro
 */
 #header {
+	position: sticky;
+	top: 0;
 	background-color: black;
 	background-color: var(--background-color);
 	padding: 1.5vw 2vw;
