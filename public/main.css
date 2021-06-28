@@ -334,6 +334,10 @@ font: acumin pro
 	z-index: 1000;
 }
 #header.toggled-on {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 100vh;
 }
 #header-title {
@@ -345,13 +349,15 @@ font: acumin pro
 #header nav {
 	display: none;
 	text-align: center;
+	margin: 0;
 }
 #header nav.toggled-on {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	top: 50%;
-	transform: translate(0, -50%);
+	left: 50%;
+	transform: translate(-50%, -50%);
 	padding: 10px;
 	font-size: 6vmin;
 }
