@@ -68,11 +68,10 @@ modified by Ryan Kirkpatrick
 					var dataID = strDataID.split("#");
 					var currentHref = window.location.href.split("#");
 					var currentPath = window.location.pathname.split("#");
-					console.log("currentPath:", currentPath);
-					console.log("DataId:", dataID);
 					if (currentHref[0] == dataID[0] || currentPath[0] == dataID[0]) {
 						// Prevent the default link behavior
 						e.preventDefault();
+						closeMenu();
 
 						// Get anchor link and calculate distance from the top
 						var dataTarget = document.querySelector(

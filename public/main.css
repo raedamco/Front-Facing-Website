@@ -39,7 +39,6 @@ body {
 	flex-direction: column;
 }
 .stop-scrolling {
-	height: 100vh;
 	overflow: hidden;
 }
 
