@@ -1,15 +1,12 @@
 /* TODO delete unused css */
 :root {
-	--background-color: #202020;
-	--text-color: white;
-	--secondary-background-color: #323232;
-	--secondary-text-color: #a3a3a3;
+	--background-color: #ffffff;
+	--text-color: black;
+	--secondary-background-color: #040531;
+	--secondary-text-color: #ffffff;
+	--nav-background-color: #0a0b52;
+	--nav-text-color: #fff;
 	--image-overlay: rgba(0, 50, 100, 0.8);
-}
-@font-face {
-	font-family: "San Francisco";
-	font-weight: 400;
-	src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 /* ======================== mobile ======================== */
 html {
@@ -25,16 +22,16 @@ html {
 	box-sizing: inherit;
 }
 body {
-	background-color: black; /* fallback */
+	background-color: white; /* fallback */
 	background-color: var(--background-color);
 	color: white; /* fallback */
 	color: var(--text-color);
-	font-family: "San Francisco", "Poppins", sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-size: 1rem;
 	font-weight: 300;
 	/* limit width of website and keep it centered */
 	margin: 0 auto;
-	max-width: 1920px;
+	/* max-width: 1920px;  */ /* TODO may delete */
 	/* push footer to bottom on low content pages */
 	display: flex;
 	flex-direction: column;
@@ -56,7 +53,7 @@ main article {
 
 main p {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
-	color: var(--secondary-text-color);
+	color: var(--text-color);
 }
 main p.small,
 small {
@@ -83,11 +80,6 @@ a {
 	/* animation */
 	transition: 0.1s opacity linear;
 }
-main a,
-#footer a {
-	border-bottom: 1px solid white;
-	border-bottom: 1px solid var(--text-color);
-}
 a:link {
 }
 a:hover {
@@ -96,10 +88,6 @@ a:hover {
 a:active {
 }
 a:visited {
-}
-h1 a {
-	border-bottom: 5px solid white;
-	border-bottom: 5px solid var(--text-color);
 }
 
 h1 {
@@ -129,16 +117,16 @@ h3,
 h4,
 h5,
 h6 {
-	color: var(--secondary-text-color);
+	color: var(--text-color);
 }
 
 button,
 .button {
 	padding: 1.3rem 2.171rem;
-	color: black; /* fallback */
-	background-color: white; /* fallback */
-	color: var(--background-color);
-	background-color: var(--text-color);
+	color: white; /* fallback */
+	background-color: #040531; /* fallback */
+	color: var(--secondary-text-color);
+	background-color: var(--secondary-background-color);
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 0.02em;
@@ -163,8 +151,6 @@ button,
 	font-size: calc((0.9 - 1) * 1.2vw + 1rem);
 	padding: 0.6rem 0.7rem;
 }
-.btn-inverted {
-}
 button:hover,
 .button:hover,
 [class^="socicon-"]:hover,
@@ -176,14 +162,6 @@ button:hover,
 	-webkit-border-radius: 0.4rem; /*Safari, Chrome*/
 	-moz-border-radius: 0.4rem; /*Firefox*/
 	border-radius: 0.4rem;
-}
-
-.fill-viewport {
-	height: 70vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
 }
 
 .flex-container {
@@ -199,17 +177,17 @@ button:hover,
 	margin: 5% 0;
 }
 .flex-card {
-	background: grey;
+	background: #0a0b52;
 	background-color: var(--secondary-background-color);
 	color: white;
-	color: var(--text-color);
+	color: var(--secondary-text-color);
 	-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
 	-moz-border-radius: 0.5rem; /*Firefox*/
 	border-radius: 0.5rem;
 	padding: 0 2% 5% 2%;
 }
 .flex-card * {
-	color: var(--text-color);
+	color: var(--secondary-text-color);
 }
 
 /* form */
@@ -221,7 +199,7 @@ form {
 	opacity: 0.7;
 }
 fieldset {
-	border: 0px solid black;
+	border: 0px solid white;
 	border: 0px solid var(--background-color);
 	padding: 0;
 }
@@ -266,9 +244,9 @@ select {
 	font-size: calc((0.9 - 1) * 1.2vw + 1rem);
 }
 #messagecontainer {
-	background-color: white; /* fallback */
+	background-color: black; /* fallback */
 	background-color: var(--text-color);
-	color: black; /* fallback */
+	color: white; /* fallback */
 	color: var(--background-color);
 	font-weight: 300;
 	text-align: center;
@@ -320,11 +298,24 @@ select {
 }
 
 /* header */
-/* 
-the font used for the company name is only available from adobe website. just need to create a web project
-font: acumin pro
-*/
+#top {
+	padding-top: 500px;
+	margin-top: -500px;
+}
 #header {
+	position: absolute;
+	top: 0;
+}
+#header-nav {
+	position: sticky;
+	width: 75%;
+	-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
+	-moz-border-radius: 0.5rem; /*Firefox*/
+	border-radius: 0.5rem;
+	z-index: 1;
+}
+
+/* #header {
 	position: sticky;
 	top: 0;
 	background-color: black;
@@ -362,11 +353,11 @@ font: acumin pro
 	font-size: 6vmin;
 }
 #header a {
-	color: white; /* fallback */
+	color: white;
 	color: var(--text-color);
 }
 #header .button {
-	color: black; /* fallback */
+	color: black;
 	color: var(--background-color);
 }
 #header .btn-inverted {
@@ -382,7 +373,7 @@ font: acumin pro
 	font-size: 5vmin;
 }
 .currentpage {
-	border-bottom: 1px solid white; /* fallback */
+	border-bottom: 1px solid white;
 	border-bottom: 1px solid var(--text-color);
 }
 #header nav.toggled-on div {
@@ -390,7 +381,7 @@ font: acumin pro
 }
 #header nav.toggled-on a.currentpage {
 	border-width: 0.5vmin;
-}
+}*/
 /* mobile menu */
 #menu-button {
 	cursor: pointer;
@@ -404,7 +395,7 @@ font: acumin pro
 	background-color: white;
 	background-color: var(--text-color);
 	margin: 6px 0;
-	transition: 0.4s;
+	transition: 0.4s transform ease, 0.4s opacity ease;
 }
 .bar1 {
 	margin-top: 0;
@@ -426,6 +417,7 @@ font: acumin pro
 	-webkit-transform: rotate(45deg) translate(-8px, -8px);
 	transform: rotate(45deg) translate(-8px, -8px);
 }
+*/
 
 /* footer */
 #footer {
@@ -440,9 +432,20 @@ p:last-child {
 	margin-bottom: 0;
 }
 
-/* page/section specific */
-#homepage .fifty {
-	width: 100%;
+/* colors */
+.inverted-color {
+	background-color: #040531;
+	background-color: var(--secondary-background-color);
+	color: white;
+	color: var(--secondary-text-color);
+}
+.inverted-color * {
+	color: white;
+	color: var(--secondary-text-color);
+}
+#header-nav {
+	background-color: #0a0b52;
+	background-color: var(--nav-background-color);
 }
 
 /* embellishments */
@@ -527,17 +530,27 @@ p:last-child {
 	text-indent: 40px;
 }
 
+/* page/article specific */
+
 /* TODO replace with bootstrap 4 later */
 .bg-dark {
-	background: grey;
+	background-color: grey;
+	background-color: var(--secondary-background-color);
+}
+.bg-primary {
+	background-color: white;
+	background-color: var(--background-color);
+}
+.bg-primary {
+	background-color: #040531;
 	background-color: var(--secondary-background-color);
 }
 .text-primary {
-	color: white;
+	color: black;
 	color: var(--text-color);
 }
 .text-secondary {
-	color: grey;
+	color: white;
 	color: var(--secondary-text-color);
 }
 .rounded {
@@ -577,7 +590,7 @@ p:last-child {
 		display: flex;
 		align-items: center;
 	}
-	#header.toggled-on {
+	/* #header.toggled-on {
 		height: auto;
 	}
 	#header nav {
@@ -608,7 +621,7 @@ p:last-child {
 	#header .toggled-on button,
 	#header .toggled-on .button {
 		font-size: inherit;
-	}
+	} */
 	#menu-button {
 		display: none;
 	}
