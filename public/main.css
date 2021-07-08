@@ -108,7 +108,7 @@ h2,
 h3,
 h4 {
 	line-height: 1.2em;
-	font-weight: bold;
+	font-weight: 900;
 	margin: 2rem 0;
 }
 
@@ -299,20 +299,45 @@ select {
 
 /* header */
 #top {
-	padding-top: 500px;
-	margin-top: -500px;
+	position: relative;
 }
-#header {
+/* fill background for header */
+#top:before {
+	content: "";
 	position: absolute;
-	top: 0;
+	top: -500px;
+	left: 0;
+	height: 500px;
+	width: 100%;
+	background-color: #040531;
+	background-color: var(--secondary-background-color);
+	z-index: -1;
 }
-#header-nav {
+header {
+}
+.header-title {
+	margin: 3vh auto;
+	text-align: center;
+	font-weight: 900;
+}
+nav {
 	position: sticky;
-	width: 75%;
+	top: 0;
+	width: 100%;
 	-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
 	-moz-border-radius: 0.5rem; /*Firefox*/
 	border-radius: 0.5rem;
 	z-index: 1;
+	text-align: center;
+	margin: 0 auto;
+}
+nav ul {
+	display: flex;
+	padding: 0 5%;
+}
+nav li {
+	display: inline-block;
+	flex-grow: 1;
 }
 
 /* #header {
@@ -359,14 +384,6 @@ select {
 #header .button {
 	color: black;
 	color: var(--background-color);
-}
-#header .btn-inverted {
-	color: white;
-	background-color: black;
-	color: var(--text-color);
-	background-color: var(--background-color);
-	border: 2px solid white;
-	border: 2px solid var(--text-color);
 }
 #header .toggled-on button,
 #header .toggled-on .button {
@@ -442,12 +459,9 @@ p:last-child {
 	color: white;
 	color: var(--secondary-text-color);
 }
-#header-nav {
+.header-nav {
 	background-color: #0a0b52;
 	background-color: var(--nav-background-color);
-}
-#header-nav {
-	display: inline-block;
 }
 
 /* embellishments */
@@ -546,6 +560,9 @@ p:last-child {
 }
 
 /* page/article specific */
+#app {
+	text-align: center;
+}
 
 /* TODO replace with bootstrap 4 later */
 .bg-dark {
@@ -601,9 +618,8 @@ p:last-child {
 	}
 
 	/* header */
-	#header {
-		display: flex;
-		align-items: center;
+	nav {
+		max-width: 580px;
 	}
 	/* #header.toggled-on {
 		height: auto;
