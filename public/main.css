@@ -417,7 +417,6 @@ select {
 	-webkit-transform: rotate(45deg) translate(-8px, -8px);
 	transform: rotate(45deg) translate(-8px, -8px);
 }
-*/
 
 /* footer */
 #footer {
@@ -447,8 +446,24 @@ p:last-child {
 	background-color: #0a0b52;
 	background-color: var(--nav-background-color);
 }
+#header-nav {
+	display: inline-block;
+}
 
 /* embellishments */
+[class^="img-divider"] {
+	position: relative;
+	left: -1px;
+	right: -1px;
+	width: calc(100% + 1px);
+	display: block;
+}
+.img-divider-top {
+	bottom: -2px;
+}
+.img-divider-bottom {
+	top: -2px;
+}
 
 /* icons */
 .material-icons {
