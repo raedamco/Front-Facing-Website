@@ -227,7 +227,7 @@ textarea {
 	color: white;
 	color: var(--secondary-text-color);
 	border: 0 solid transparent;
-	padding: 1.3rem 2.171rem;
+	padding: 1.3rem;
 }
 input:invalid {
 	/*border: red solid 3px;*/
@@ -251,7 +251,6 @@ input.button {
 }
 textarea {
 	height: 100px;
-	padding: 5px;
 }
 select {
 	font: inherit;
