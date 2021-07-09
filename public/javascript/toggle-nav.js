@@ -3,10 +3,12 @@ function menuToggle(menu) {
 	let header = document.getElementById("header");
 	let nav = document.getElementById("header-nav");
 
-	menu.classList.toggle("cross");
-	header.classList.toggle("toggled-on");
-	nav.classList.toggle("toggled-on");
-	document.body.classList.toggle("stop-scrolling");
+	if (header && nav) {
+		menu.classList.toggle("cross");
+		header.classList.toggle("toggled-on");
+		nav.classList.toggle("toggled-on");
+		document.body.classList.toggle("stop-scrolling");
+	}
 }
 
 function closeMenu() {
@@ -14,8 +16,10 @@ function closeMenu() {
 	let header = document.getElementById("header");
 	let nav = document.getElementById("header-nav");
 
-	menu.classList.remove("cross");
-	header.classList.remove("toggled-on");
-	nav.classList.remove("toggled-on");
-	document.body.classList.remove("stop-scrolling");
+	if (menu && header && nav) {
+		menu.classList.remove("cross");
+		header.classList.remove("toggled-on");
+		nav.classList.remove("toggled-on");
+		document.body.classList.remove("stop-scrolling");
+	}
 }
