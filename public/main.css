@@ -1,4 +1,3 @@
-/* TODO delete unused css */
 :root {
 	--background-color: #ffffff;
 	--text-color: black;
@@ -20,6 +19,12 @@ html {
 	-webkit-box-sizing: inherit;
 	-moz-box-sizing: inherit;
 	box-sizing: inherit;
+}
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
 }
 body {
 	background-color: white; /* fallback */
@@ -54,7 +59,21 @@ article {
 article + article {
 	padding-top: 0;
 }
-.inverted-color + object + section article {
+.inverted-color article:last-child,
+main > article:last-child {
+	padding-bottom: 0;
+}
+main .img-divider-top + .inverted-color article:first-child,
+main .inverted-color h1:first-child,
+main .inverted-color h2:first-child {
+	margin-top: 0;
+	padding-top: 0;
+}
+main .inverted-color :last-child {
+	margin-bottom: 0;
+}
+object.img-divider-bottom + section article,
+object.img-divider-bottom + article {
 	padding-top: 0;
 }
 
@@ -404,8 +423,13 @@ div[class*="bar"] {
 
 /* footer */
 footer {
-	padding: 0 3vw 3.3vmax 3vw;
 	flex-shrink: 0;
+}
+footer > div {
+	padding: 0 3vw 3.3vmax 3vw;
+}
+footer h2:first-child {
+	margin-top: 0;
 }
 footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
@@ -454,10 +478,10 @@ p:last-child {
 	display: block;
 }
 .img-divider-top {
-	bottom: -4px;
+	bottom: -2px;
 }
 .img-divider-bottom {
-	top: -4px;
+	top: -2px;
 }
 
 /* icons */
@@ -589,11 +613,6 @@ p:last-child {
 
 	.tfifty {
 		width: 49%;
-	}
-
-	/* page/section specific */
-	#homepage .fifty {
-		width: 50%;
 	}
 
 	/* form */
