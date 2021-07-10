@@ -50,11 +50,8 @@ article {
 	padding: 6vmax 8vw;
 	position: relative;
 }
-article:first-of-type {
+.inverted-color + object + article {
 	padding-top: 0;
-}
-article:first-of-type.inverted-color {
-	padding-top: 6vmax;
 }
 
 main p {
@@ -322,94 +319,60 @@ select {
 /* header */
 header {
 	position: relative;
-}
-/* fill background for nav */
-header:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -3.5rem;
-	width: 100%;
-	height: 3.5rem;
-	background-color: #040531;
-	background-color: var(--secondary-background-color);
+	/* display: flex;
+	align-items: center; */
 }
 .header-title {
 	margin: 3vh auto;
 	text-align: center;
 	font-weight: 900;
 }
-
-/* #header {
-	position: sticky;
-	top: 0;
-	background-color: black;
-	background-color: var(--background-color);
-	padding: 1.5vw 2vw;
-	flex-shrink: 0;
-	z-index: 1000;
-}
-#header.toggled-on {
+nav {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	height: 100vh;
-}
-#header-title {
-	font-weight: bold;
-	font-style: normal;
-	letter-spacing: 0.3em;
-	font-size: calc((1.4 - 1) * 1.2vw + 1rem);
-}
-#header nav {
+	z-index: 1;
 	display: none;
 	text-align: center;
 	margin: 0;
 }
-#header nav.toggled-on {
+nav.toggled-on {
+	display: block;
+}
+nav ul {
 	display: flex;
 	flex-direction: column;
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 10px;
-	font-size: 6vmin;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	height: 100%;
 }
-#header a {
-	color: white;
-	color: var(--text-color);
+nav li {
+	display: inline-block;
+	padding: 2vh;
+	font-size: 6vh;
 }
-#header .button {
-	color: black;
-	color: var(--background-color);
-}
-#header .toggled-on button,
-#header .toggled-on .button {
-	font-size: 5vmin;
-}
-.currentpage {
-	border-bottom: 1px solid white;
-	border-bottom: 1px solid var(--text-color);
-}
-#header nav.toggled-on div {
-	margin-bottom: 10px;
-}
-#header nav.toggled-on a.currentpage {
-	border-width: 0.5vmin;
-}*/
 /* mobile menu */
 #menu-button {
 	cursor: pointer;
-	float: right;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	margin: 1vh;
+	/* background */
+	padding: 5px 10px;
+	background-color: #0a0b52;
+	-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
+	-moz-border-radius: 0.5rem; /*Firefox*/
+	border-radius: 0.5rem;
 }
-.bar1,
-.bar2,
-.bar3 {
+div[class*="bar"] {
 	width: 35px;
 	height: 5px;
-	background-color: white;
+	background-color: black;
 	background-color: var(--text-color);
 	margin: 6px 0;
 	transition: 0.4s transform ease, 0.4s opacity ease;
@@ -469,7 +432,11 @@ p:last-child {
 	background-color: #0a0b52;
 	background-color: var(--nav-background-color);
 }
-.header-nav {
+.inverted-color div[class*="bar"] {
+	background-color: white;
+	background-color: var(--secondary-text-color);
+}
+#header-nav {
 	background-color: #0a0b52;
 	background-color: var(--nav-background-color);
 }
@@ -639,61 +606,42 @@ p:last-child {
 	}
 
 	/* header */
-	nav {
-		max-width: 580px;
+	/* fill background for nav */
+	header:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -3.5rem;
+		width: 100%;
+		height: 3.5rem;
+		background-color: #040531;
+		background-color: var(--secondary-background-color);
 	}
-
 	nav {
 		position: sticky;
-		top: 0;
 		width: 100%;
+		max-width: 580px;
 		-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
 		-moz-border-radius: 0.5rem; /*Firefox*/
 		border-radius: 0.5rem;
-		z-index: 1;
-		text-align: center;
 		margin: 0 auto;
+		/* reset mobile */
+		height: unset;
+		left: unset;
+		right: unset;
+		display: unset;
 	}
 	nav ul {
 		display: flex;
+		flex-direction: row;
 		padding: 0 5%;
+		margin: 1em 0;
 	}
 	nav li {
-		display: inline-block;
 		flex-grow: 1;
-	}
-	/* #header.toggled-on {
-		height: auto;
-	}
-	#header nav {
-		float: right;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		flex-grow: 10;
+		font-size: 1rem;
 		padding: 0;
 	}
-	#header nav.toggled-on {
-		flex-direction: row;
-		font-size: inherit;
-	}
-	#header nav a {
-		margin-left: 1.5vw;
-		margin-right: 2.5vw;
-	}
-	#header nav a:last-child {
-		margin-right: 0;
-	}
-	#header nav.toggled-on div {
-		margin-bottom: 0;
-	}
-	#header nav.toggled-on a.currentpage {
-		border-width: 1px;
-	}
-	#header .toggled-on button,
-	#header .toggled-on .button {
-		font-size: inherit;
-	} */
 	#menu-button {
 		display: none;
 	}
