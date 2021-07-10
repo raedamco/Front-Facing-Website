@@ -45,12 +45,16 @@ main {
 	text-align: left;
 	flex: 1 0 auto;
 }
-
 article {
 	padding: 6vmax 8vw;
 	position: relative;
+	margin: 0 auto;
+	max-width: 1920px;
 }
-.inverted-color + object + article {
+article + article {
+	padding-top: 0;
+}
+.inverted-color + object + section article {
 	padding-top: 0;
 }
 
@@ -361,7 +365,7 @@ nav li {
 	top: 0;
 	left: 0;
 	z-index: 2;
-	margin: 1vh;
+	margin: 0.5vh;
 	/* background */
 	padding: 5px 10px;
 	background-color: #0a0b52;
@@ -400,7 +404,7 @@ div[class*="bar"] {
 
 /* footer */
 footer {
-	padding: 3.3vmax 3vw;
+	padding: 0 3vw 3.3vmax 3vw;
 	flex-shrink: 0;
 }
 footer strong {
@@ -450,10 +454,10 @@ p:last-child {
 	display: block;
 }
 .img-divider-top {
-	bottom: -2px;
+	bottom: -4px;
 }
 .img-divider-bottom {
-	top: -2px;
+	top: -4px;
 }
 
 /* icons */
