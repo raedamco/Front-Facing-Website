@@ -7,7 +7,8 @@ window.addEventListener("load", () => {
 	function sendForm(form) {
 		const formData = new FormData(form);
 		const json = JSON.stringify(Object.fromEntries(formData.entries()));
-		const postUrl = window.location.pathname + "-form";
+		// const postUrl = window.location.pathname + "-form";
+		const postUrl = form.id;
 
 		$.ajax({
 			type: "POST",
@@ -70,15 +71,15 @@ window.addEventListener("load", () => {
 		}
 	}
 
-	// Selects the first form in the DOM. Should only ever be one form.
-	const form = document.querySelector("form");
+	// Selects all forms in the dom.
+	const forms = document.querySelectorAll("form");
 
 	// Override form default submission
-	if (form != null) {
+	forms.forEach((form) => {
 		form.addEventListener("submit", (event) => {
 			event.preventDefault();
 
 			getToken(form);
 		});
-	}
+	});
 });

@@ -338,10 +338,10 @@ select {
 }
 
 /* specific form */
-#email-list {
+#newsletter-form {
 	width: 100%;
 }
-#email-list #email {
+#newsletter-form #email {
 	width: 90%;
 	margin-bottom: 10px;
 }
