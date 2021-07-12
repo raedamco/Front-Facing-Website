@@ -2,12 +2,10 @@
  * @author Ryan Dean Kirkpatrick
  */
 
-//TODO fix for multiple forms on one page. use form id for postUrl
 window.addEventListener("load", () => {
 	function sendForm(form) {
 		const formData = new FormData(form);
 		const json = JSON.stringify(Object.fromEntries(formData.entries()));
-		// const postUrl = window.location.pathname + "-form";
 		const postUrl = form.id;
 
 		$.ajax({

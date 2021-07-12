@@ -36,7 +36,6 @@ body {
 	font-weight: 300;
 	/* limit width of website and keep it centered */
 	margin: 0 auto;
-	/* max-width: 1920px;  */ /* TODO may delete */
 	/* push footer to bottom on low content pages */
 	display: flex;
 	flex-direction: column;
@@ -284,15 +283,18 @@ select {
 	font-size: calc((0.9 - 1) * 1.2vw + 1rem);
 }
 #messagecontainer {
-	background-color: black; /* fallback */
-	background-color: var(--text-color);
+	background-color: #0a0b52; /* fallback */
+	background-color: var(--nav-background-color);
 	color: white; /* fallback */
-	color: var(--background-color);
+	color: var(--nav-text-color);
 	font-weight: 300;
 	text-align: center;
 	width: 100%;
 	max-width: 1900px;
 	padding: 3%;
+	-webkit-border-radius: 0.5rem; /*Safari, Chrome*/
+	-moz-border-radius: 0.5rem; /*Firefox*/
+	border-radius: 0.5rem;
 	/* position */
 	position: fixed;
 	bottom: 0px;
@@ -323,18 +325,20 @@ select {
 	opacity: 0.6;
 }
 #messagecontainer .button {
-	background-color: black; /* fallback */
-	background-color: var(--background-color);
+	background-color: #040531; /* fallback */
+	background-color: var(--secondary-background-color);
 	color: white; /* fallback */
-	color: var(--text-color);
+	color: var(--secondary-text-color);
 }
 #messagecontainer.confirmation {
-	border: 2px solid #376f19;
-	color: #376f19;
+	border: 2px solid #4bd800;
+	color: white;
+	color: var(--secondary-text-color);
 }
 #messagecontainer.tryagain {
 	border: 2px solid red;
-	color: red;
+	color: white;
+	color: var(--secondary-text-color);
 }
 
 /* specific form */
@@ -630,10 +634,10 @@ p:last-child {
 		width: 36%;
 	}
 
-	#email-list {
+	#newsletter-form {
 		width: 50%;
 	}
-	#email-list #email {
+	#newsletter-form #email {
 		width: 60%;
 		margin-right: 10px;
 	}
