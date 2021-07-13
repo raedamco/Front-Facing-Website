@@ -78,8 +78,8 @@ main .inverted-color h2:first-child {
 main .inverted-color :last-child {
 	margin-bottom: 0;
 }
-object.img-divider-bottom + section article,
-object.img-divider-bottom + article {
+.img-divider-bottom + section article,
+.img-divider-bottom + article {
 	padding-top: 0;
 }
 
@@ -483,16 +483,16 @@ p:last-child {
 /* embellishments */
 [class^="img-divider"] {
 	position: relative;
-	left: -1px;
-	right: -1px;
-	width: calc(100% + 1px);
+	left: 0;
+	right: 0;
+	width: 100%;
 	display: block;
 }
 .img-divider-top {
-	bottom: -2px;
+	bottom: 0;
 }
 .img-divider-bottom {
-	top: -2px;
+	top: 0;
 }
 
 /* icons */
