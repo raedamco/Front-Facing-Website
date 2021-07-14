@@ -353,8 +353,6 @@ select {
 /* header */
 header {
 	position: relative;
-	/* display: flex;
-	align-items: center; */
 }
 .header-title {
 	margin: 3vh auto;
@@ -487,12 +485,13 @@ p:last-child {
 	right: 0;
 	width: 100%;
 	display: block;
+	z-index: -1;
 }
 .img-divider-top {
-	bottom: 0;
+	bottom: -2px;
 }
 .img-divider-bottom {
-	top: 0;
+	top: -2px;
 }
 
 /* icons */
@@ -650,7 +649,7 @@ p:last-child {
 		left: 0;
 		bottom: -3.5rem;
 		width: 100%;
-		height: 3.5rem;
+		height: 4rem;
 		background-color: #040531;
 		background-color: var(--secondary-background-color);
 	}
