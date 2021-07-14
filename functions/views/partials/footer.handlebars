@@ -3,15 +3,44 @@
 	<!-- Dividing Image !-->
 	{{> footerdesign}}
 	<div class="inverted-color">
-		<h2>Join the Raedam mailing list:</h2>
-		<form id="newsletter-form" class="alignform">
-			<input
-				type="text"
-				id="email"
-				name="email"
-				placeholder="e.g. support@raedam.co"
-			/>
-			<button type="submit" form="newsletter-form" value="Submit">Join</button>
-		</form>
+		<div id="footer-form" class="flex-container">
+			<h4 class="flex-item">JOIN THE MAILING LIST</h4>
+			<form id="newsletter-form" class="alignform flexitem">
+				<input
+					type="text"
+					id="email"
+					name="email"
+					placeholder="e.g. support@raedam.co"
+				/>
+				<button type="submit" form="newsletter-form" value="Submit">Join</button>
+			</form>
+		</div>
+		<hr />
+		<div id="footer-nav" class="flex-container">
+			<div class="flex-item">
+				<p><strong>ABOUT</strong></p>
+				<p><a href="/about">Team</a></p>
+			</div>
+			<div class="flex-item">
+				<p><strong>UPDATES</strong></p>
+				<p hidden><a href="/press">Press</a></p>
+				<p><a href="/newsletter">Newsletter</a></p>
+			</div>
+			<div class="flex-item">
+				<div>
+					<p><strong>CONTACT</strong></p>
+					<p><span class="rot13">bzne@enrqnz.pb</span><br><span class="rot5">(426)-864-6296</span></p>
+					<p>2828 South Corbett Avenue<br>Portland, OR 97201</p>
+				</div>
+				<div class="padding">
+					{{> social}}
+				</div>
+			</div>
+		</div>
+		<p>Raedam <span id="year"></span></p>
 	</div>
 </footer>
+<!-- Scripts -->
+<script>
+	document.getElementById('year').innerText = new Date().getFullYear();
+</script>

@@ -55,6 +55,10 @@ article {
 	margin: 0 auto;
 	max-width: 1920px;
 }
+footer > div > * {
+	max-width: 1920px;
+	margin: 0 auto;
+}
 article.title {
 	padding-top: 0;
 	padding-bottom: 0;
@@ -359,7 +363,7 @@ header {
 	text-align: center;
 	font-weight: 900;
 }
-nav {
+#header-nav {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -370,10 +374,10 @@ nav {
 	text-align: center;
 	margin: 0;
 }
-nav.toggled-on {
+#header-nav.toggled-on {
 	display: block;
 }
-nav ul {
+#header-nav ul {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -381,7 +385,7 @@ nav ul {
 	margin: 0;
 	height: 100%;
 }
-nav li {
+#header-nav li {
 	display: inline-block;
 	padding: 2vh;
 	font-size: 6vh;
@@ -437,11 +441,32 @@ footer {
 footer > div {
 	padding: 0 3vw 3.3vmax 3vw;
 }
-footer h2:first-child {
+footer h4:first-child {
 	margin-top: 0;
 }
 footer strong {
 	font-size: calc((1.5 - 1) * 1.2vw + 1rem);
+}
+#footer-form {
+	padding-bottom: 3%;
+}
+#footer-nav {
+	padding-top: 2%;
+}
+footer > div > p {
+	margin: 0;
+	padding: 2%;
+	text-align: left;
+}
+footer a:not(.fa) {
+	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--secondary-text-color);
+}
+#footer-form .flex-container {
+	align-items: center;
+}
+footer > div > p:last-child {
+	text-align: center;
 }
 
 p:last-child {
@@ -493,6 +518,14 @@ p:last-child {
 .img-divider-bottom {
 	top: -2px;
 }
+hr {
+	border: 2px solid #040531;
+	border: 2px solid var(--secondary-background-color);
+}
+.inverted-color hr {
+	border: 2px solid #0a0b52;
+	border: 2px solid var(--nav-background-color);
+}
 
 /* icons */
 .material-icons {
@@ -503,10 +536,14 @@ p:last-child {
 	font-feature-settings: "liga";
 } /* Support for IE. */
 .fa {
-	color: white;
+	color: black;
 	color: var(--text-color);
 	margin-right: 14px;
 	padding: 2px;
+}
+.inverted-color .fa {
+	color: white;
+	color: var(--secondary-text-color);
 }
 
 .alignleft {
@@ -653,7 +690,7 @@ p:last-child {
 		background-color: #040531;
 		background-color: var(--secondary-background-color);
 	}
-	nav {
+	#header-nav {
 		position: sticky;
 		width: 100%;
 		max-width: 580px;
@@ -667,13 +704,13 @@ p:last-child {
 		right: unset;
 		display: unset;
 	}
-	nav ul {
+	#header-nav ul {
 		display: flex;
 		flex-direction: row;
 		padding: 0 5%;
 		margin: 1em 0;
 	}
-	nav li {
+	#header-nav li {
 		flex-grow: 1;
 		font-size: 1rem;
 		padding: 0;
@@ -683,6 +720,25 @@ p:last-child {
 	}
 
 	/* footer */
+	footer,
+	footer .flex-item {
+		text-align: left;
+	}
+	footer h4:first-child {
+		margin: 0;
+	}
+	#footer-form {
+		padding-bottom: 1%;
+	}
+	footer .padding {
+		padding-left: 0;
+	}
+	footer > div > p:last-child {
+		text-align: left;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	.flex-container {
 		flex-direction: row;
 	}
