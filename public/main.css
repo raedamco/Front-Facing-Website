@@ -615,8 +615,11 @@ hr {
 .padding {
 	padding: 17px;
 }
-.padding-side {
+.padding-h {
 	padding: 0 17px;
+}
+.padding-v {
+	padding: 17px 0;
 }
 .tab {
 	text-indent: 40px;
@@ -742,8 +745,9 @@ hr {
 		flex-grow: 0;
 		flex-basis: auto;
 	}
-	footer .padding {
-		padding-left: 0;
+	footer > div > p {
+		margin: 0;
+		padding: 0;
 	}
 	footer > div > p:last-child {
 		text-align: left;
