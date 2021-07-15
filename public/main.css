@@ -449,9 +449,14 @@ footer strong {
 }
 #footer-form {
 	padding-bottom: 3%;
+	align-items: center;
 }
 #footer-nav {
 	padding-top: 2%;
+	justify-content: space-between;
+}
+#footer-nav .fa:last-child {
+	margin-right: 0;
 }
 footer > div > p {
 	margin: 0;
@@ -671,11 +676,14 @@ hr {
 	}
 
 	#newsletter-form {
-		width: 50%;
+		flex-basis: 50%;
+		display: flex;
+		justify-content: flex-end;
 	}
 	#newsletter-form #email {
 		width: 60%;
 		margin-right: 10px;
+		margin-bottom: 0;
 	}
 
 	/* header */
@@ -728,7 +736,11 @@ hr {
 		margin: 0;
 	}
 	#footer-form {
-		padding-bottom: 1%;
+		padding-bottom: 2%;
+	}
+	#footer-nav .flex-item {
+		flex-grow: 0;
+		flex-basis: auto;
 	}
 	footer .padding {
 		padding-left: 0;
