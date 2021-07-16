@@ -2,6 +2,7 @@
 http://codepen.io/rleve/pen/iCbgy?editors=101
 modified by Ryan Kirkpatrick
 */
+// TODO replace with css smoothscroll
 
 (function () {
 	"use strict";

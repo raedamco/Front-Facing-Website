@@ -54,6 +54,7 @@ article {
 	position: relative;
 	margin: 0 auto;
 	max-width: 1920px;
+	scroll-margin-top: 4rem;
 }
 footer > div > * {
 	max-width: 1920px;
@@ -171,7 +172,6 @@ button,
 	/* remove default button css */
 	font: inherit;
 	border: 0px solid white;
-	outline: none;
 	/* animation */
 	transition: 0.1s opacity linear;
 	/* border radius */
@@ -259,8 +259,9 @@ textarea {
 	border: 0 solid transparent;
 	padding: 1.3rem;
 }
-input:invalid {
-	/*border: red solid 3px;*/
+:not(.inverted-color) input:focus,
+:not(.inverted-color) textarea:focus {
+	outline-offset: 2px;
 }
 input.button {
 	width: auto;
