@@ -68,3 +68,8 @@ node_modules/
 package-lock.json
 
 .hidden views
+
+# api keys
+keys.json
+email.json
+credentials.json
